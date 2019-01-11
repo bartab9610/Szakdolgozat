@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="20dp"
+                />
+            <solid
+                android:color="#0044FF"
+                />
+            <stroke
+                android:width="2dp"
+                android:color="@color/Gomb_helyes_valasz_hatter"
+                />
+            <gradient
+                android:startColor="@color/Application_background_black"
+                android:centerColor="@color/Gomb_helyes_valasz_hatter"
+                android:endColor="@color/Application_background_black"
+                />
+        </shape>
+    </item>
+</selector>

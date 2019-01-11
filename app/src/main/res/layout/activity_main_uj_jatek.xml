@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Application_background_black"
+    tools:context=".MainActivity_uj_jatek">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:id="@+id/Activity_2_imageview_ikon"
+        android:background="@drawable/loim_hatter"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Activity_2_textview_informacio"
+        android:text="A játék indításához kötelező egy becenév:"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/Text_color_white"
+        android:layout_below="@id/Activity_2_imageview_ikon"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Activity_2_edittext_becenev"
+        android:textSize="24dp"
+        android:textColor="@color/Text_color_white"
+        android:hint=". . . . . . . "
+        android:textColorHint="@color/Text_color_white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/Activity_2_textview_informacio"
+        />
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Activity_2_button_jatek_inditas"
+        android:text="Játék indítása"
+        android:textSize="24dp"
+        android:textColor="@color/Text_color_white"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/gomb_style"
+        android:layout_below="@id/Activity_2_edittext_becenev"
+        android:layout_marginTop="25dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Activity_2_button_vissza"
+        android:text="Vissza"
+        android:textSize="24dp"
+        android:textColor="@color/Text_color_white"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/gomb_style"
+        />
+</RelativeLayout>

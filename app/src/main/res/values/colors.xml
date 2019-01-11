@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0000FF</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- Egyéni színek -->
+    <color name="Text_color_white">#FFFFFF</color>
+    <color name="Application_background_black">#000000</color>
+    <color name="Gomb_keret_narancs">#FF6600</color>
+    <color name="Gomb_keret_kek">#0000FF</color>
+    <color name="Textview_keret_kek">#0000FF</color>
+    <color name="Gomb_helyes_valasz_hatter">#39FF14</color>
+    <color name="Gomb_hibas_valasz_hatter">#FF0000</color>
+</resources>

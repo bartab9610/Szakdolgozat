@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <corners
+                android:bottomLeftRadius="35dp"
+                android:topRightRadius="35dp"
+                />
+            <solid
+                android:color="@color/Gomb_keret_kek"
+                />
+            <stroke
+                android:width="2dp"
+                android:color="@color/Gomb_keret_kek"
+                />
+            <gradient
+                android:startColor="@color/Application_background_black"
+                android:centerColor="@color/Gomb_keret_kek"
+                android:endColor="@color/Application_background_black"
+                />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners
+                android:bottomLeftRadius="35dp"
+                android:topRightRadius="35dp"
+                />
+            <solid
+                android:color="#0044FF"
+                />
+            <stroke
+                android:width="2dp"
+                android:color="#0044FF"
+                />
+            <gradient
+                android:startColor="@color/Application_background_black"
+                android:centerColor="@color/Gomb_keret_narancs"
+                android:endColor="@color/Application_background_black"
+                />
+        </shape>
+    </item>
+</selector>
+<!-- <item android:state_pressed="false"> - ha nincs rákattintra ilyen lesz a színe -->
+<!-- <shape android:shape="rectangle"> - meg lehet adni kör illetve téglalap formát -->
+<!-- <corners> - rectangle-nél a sarkakat lehet megadni hány dp-re legyen kerekítve (külön-külön + lehet egyben az egészet) -->
+<!-- <solid> - itt adom meg magának a testnek a háttérszínét -->
+<!-- <stroke> - keretet lehet neki adni(border) - színnel és szélességgel -->
+<!-- <gradient> - meg lehet adni színátmeneteket - kezdő szín - vég szín - -->
+
+<!-- <corners
+                android:bottomLeftRadius="35dp"
+                android:topRightRadius="35dp"
+                />
+            <solid
+                android:color="#0044FF"
+                />
+            <stroke
+                android:width="2dp"
+                android:color="@color/Gomb_keret_narancs"
+                />
+            <gradient
+                android:startColor="#000000"
+                android:centerColor="#FF6600"
+                android:endColor="#0000FF"
+                />
+-->
