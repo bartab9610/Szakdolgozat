@@ -1,9 +1,10 @@
 package comw.example.user.szakdolgozat;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,11 +37,14 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private String Valasz_C;
     private String Valasz_D;
     private char Helyes_valasz_karakter;
+    private char[] Rossz_valasz_karakter; // TESZT
 
     private static int keslelteto = 2000;
 
     private CountDownTimer Visszaszamlalo;
     private long Visszaszamlalo_ido = 90000;
+
+    private String filename = "adatok";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -71,8 +75,8 @@ public class MainActivity_kerdesek extends AppCompatActivity
         */
         try
         {
-            InputStream Kerdes_beolvasas = this.getResources().openRawResource(R.raw.fajlbeolvasas_kerdesek);
-            BufferedReader br = new BufferedReader(new InputStreamReader(Kerdes_beolvasas ));
+            InputStream Kerdes_beolvasas = this.getResources().openRawResource(R.raw.kerdesek);
+            BufferedReader br = new BufferedReader(new InputStreamReader(Kerdes_beolvasas));
 
             String Sor_vagas;while ((Sor_vagas = br.readLine()) != null)
         {
@@ -142,6 +146,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
             {
                 if ('A' == Helyes_valasz_karakter)
                 {
+                    Button_valasz_A.setEnabled(false);
+                    Button_valasz_B.setEnabled(false);
+                    Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                    Button_valasz_D.setEnabled(false);
                     Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
@@ -156,6 +164,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 }
                 else
                 {
+                    Button_valasz_A.setEnabled(false);
+                    Button_valasz_B.setEnabled(false);
+                    Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                    Button_valasz_D.setEnabled(false);
                     Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
@@ -163,6 +175,17 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             public void run()
                             {
                                 Button_valasz_A.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
+                                switch (Helyes_valasz_karakter)
+                                {
+                                    case 'A': Button_valasz_A.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'B': Button_valasz_B.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'C': Button_valasz_C.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'D': Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                }
                                 Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -178,24 +201,38 @@ public class MainActivity_kerdesek extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                Button_valasz_A.setEnabled(false);
+                Button_valasz_B.setEnabled(false);
+                Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                Button_valasz_D.setEnabled(false);
                 if ('B' == Helyes_valasz_karakter)
                 {
                     Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     //  Kivalasztott_valasz_valtas();
                     new Handler().postDelayed(new Runnable()
                         {
+                            SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor szerkeszto = mentes.edit();
+                            int adat = mentes.getInt("teszt",0);
                             @Override
                             public void run()
                             {
+                                adat++;
+                                szerkeszto.putInt("teszt",adat);
+                                szerkeszto.commit();
                                 Button_valasz_B.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
-                                Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
-                                Eredmenyek_oldal();
+                                Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz! " + adat, Toast.LENGTH_SHORT).show();
+                                // Eredmenyek_oldal();
                             }
                         }
                         ,keslelteto);
                 }
                 else
                 {
+                    Button_valasz_A.setEnabled(false);
+                    Button_valasz_B.setEnabled(false);
+                    Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                    Button_valasz_D.setEnabled(false);
                     Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
@@ -204,6 +241,17 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 Button_valasz_B.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
                                 Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
+                                switch (Helyes_valasz_karakter)
+                                {
+                                    case 'A': Button_valasz_A.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'B': Button_valasz_B.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'C': Button_valasz_C.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'D': Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                }
                             }
                         }
                         ,keslelteto);
@@ -218,6 +266,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                Button_valasz_A.setEnabled(false);
+                Button_valasz_B.setEnabled(false);
+                Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                Button_valasz_D.setEnabled(false);
                 if ('C' == Helyes_valasz_karakter)
                 {
                     Button_valasz_C.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
@@ -234,6 +286,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 }
                 else
                 {
+                    Button_valasz_A.setEnabled(false);
+                    Button_valasz_B.setEnabled(false);
+                    Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                    Button_valasz_D.setEnabled(false);
                     Button_valasz_C.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
@@ -241,6 +297,17 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             public void run()
                             {
                                 Button_valasz_C.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
+                                switch (Helyes_valasz_karakter)
+                                {
+                                    case 'A': Button_valasz_A.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'B': Button_valasz_B.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'C': Button_valasz_C.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'D': Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                }
                                 Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -256,6 +323,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                Button_valasz_A.setEnabled(false);
+                Button_valasz_B.setEnabled(false);
+                Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                Button_valasz_D.setEnabled(false);
                 if ('D' == Helyes_valasz_karakter)
                 {
                     Button_valasz_D.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
@@ -272,6 +343,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 }
                 else
                 {
+                    Button_valasz_A.setEnabled(false);
+                    Button_valasz_B.setEnabled(false);
+                    Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                    Button_valasz_D.setEnabled(false);
                     Button_valasz_D.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
@@ -279,6 +354,17 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             public void run()
                             {
                                 Button_valasz_D.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
+                                switch (Helyes_valasz_karakter)
+                                {
+                                    case 'A': Button_valasz_A.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'B': Button_valasz_B.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'C': Button_valasz_C.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                    case 'D': Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
+                                        break;
+                                }
                                 Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
                             }
                         }

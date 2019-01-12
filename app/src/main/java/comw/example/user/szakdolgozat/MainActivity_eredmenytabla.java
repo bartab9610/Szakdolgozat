@@ -1,7 +1,11 @@
 package comw.example.user.szakdolgozat;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity_eredmenytabla extends AppCompatActivity
@@ -20,6 +24,8 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
     private Button Activity_4_Button_nyeremeny_12;
     private Button Activity_4_Button_nyeremeny_13;
 
+    private String filename = "adatok";
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -27,6 +33,13 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
         setContentView(R.layout.activity_main_eredmenytabla);
 
         Inicializalas();
+        Activity_4_Button_nyeremeny_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Kovetkezo_kerdes();
+            }
+        });
     }
     public void Inicializalas()
     {
@@ -43,5 +56,11 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
         Activity_4_Button_nyeremeny_11 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_11);
         Activity_4_Button_nyeremeny_12 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_12);
         Activity_4_Button_nyeremeny_13 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_13);
+    }
+    public void Kovetkezo_kerdes()
+    {
+        Intent kovetkezo = new Intent(MainActivity_eredmenytabla.this,MainActivity_kerdesek.class);
+        startActivity(kovetkezo);
+        finish();
     }
 }

@@ -1,11 +1,12 @@
 package comw.example.user.szakdolgozat;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity_uj_jatek extends AppCompatActivity
 {
@@ -32,6 +33,7 @@ public class MainActivity_uj_jatek extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                Eredmenyek_novelese_Mentes();
                 Jatek_inditas();
             }
         });
@@ -53,5 +55,14 @@ public class MainActivity_uj_jatek extends AppCompatActivity
         startActivity(Jatek_inditas_kerdesek);
         finish();
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+    }
+    public void Eredmenyek_novelese_Mentes()
+    {
+        String filename = "adatok";
+        int jo_valaszok_szam = 0;
+        SharedPreferences jo_valaszok_mentese = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        SharedPreferences.Editor szerkeszto = jo_valaszok_mentese.edit();
+        szerkeszto.putInt("teszt",jo_valaszok_szam);
+        szerkeszto.commit();
     }
 }

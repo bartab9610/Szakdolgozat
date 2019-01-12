@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Kerdesek
 {
-
+    /*
     String[] Tomb_Kerdes_adatok;
     String Kerdes;
     String Valasz_A;
@@ -50,5 +50,5 @@ public class Kerdesek
             // Toast.makeText(,"Hiba: " + ex,Toast.LENGTH_SHORT).show();
         }
     }
-
+    */
 }
