@@ -158,6 +158,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 Button_valasz_A.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
+                                Eredmenyek_oldal();
                             }
                         }
                         ,keslelteto);
@@ -187,6 +188,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                                         break;
                                 }
                                 Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
+                                Eredmenyek_oldal();
                             }
                         }
                         ,keslelteto);
@@ -222,7 +224,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                                 szerkeszto.commit();
                                 Button_valasz_B.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz! " + adat, Toast.LENGTH_SHORT).show();
-                                // Eredmenyek_oldal();
+                                Eredmenyek_oldal();
                             }
                         }
                         ,keslelteto);
@@ -240,7 +242,6 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             public void run()
                             {
                                 Button_valasz_B.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
-                                Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
                                 switch (Helyes_valasz_karakter)
                                 {
                                     case 'A': Button_valasz_A.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
@@ -252,6 +253,8 @@ public class MainActivity_kerdesek extends AppCompatActivity
                                     case 'D': Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                         break;
                                 }
+                                Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
+                                Eredmenyek_oldal();
                             }
                         }
                         ,keslelteto);
@@ -280,6 +283,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 Button_valasz_C.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
+                                Eredmenyek_oldal();
                             }
                         }
                         ,keslelteto);
@@ -309,6 +313,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                                         break;
                                 }
                                 Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
+                                Eredmenyek_oldal();
                             }
                         }
                         ,keslelteto);
@@ -337,6 +342,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
+                                Eredmenyek_oldal();
                             }
                         }
                         ,keslelteto);
@@ -366,6 +372,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                                         break;
                                 }
                                 Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
+                                Eredmenyek_oldal();
                             }
                         }
                         ,keslelteto);
@@ -375,9 +382,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
     }
     public void Eredmenyek_oldal()
     {
-        Intent Jelenlegi_eredmenyek_megjelenitese = new Intent(MainActivity_kerdesek.this,MainActivity_eredmenytabla.class);
-        startActivity(Jelenlegi_eredmenyek_megjelenitese);
+        Intent Elnyert_osszeg = new Intent(MainActivity_kerdesek.this,MainActivity_eredmenytabla.class);
+        startActivity(Elnyert_osszeg);
         finish();
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
     }
     public void Kerdes_ido_visszaszamlalo()
     {

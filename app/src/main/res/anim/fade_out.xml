@@ -3,5 +3,5 @@
     android:interpolator="@android:anim/accelerate_interpolator"
     android:fromAlpha="1.0" android:toAlpha="0.0"
     android:fillAfter="false"
-    android:duration="1000"
+    android:duration="500"
     />
