@@ -13,21 +13,26 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".MainActivity_animacio"
-                android:screenOrientation="portrait">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity_uj_jatek"
+        <activity
+            android:name=".MainActivity_uj_jatek"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity_kerdesek"
+        <activity
+            android:name=".MainActivity_kerdesek"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity_eredmenytabla"
+        <activity
+            android:name=".MainActivity_eredmenytabla"
             android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity_eddigi_jatekok"></activity>
     </application>
 
 </manifest>

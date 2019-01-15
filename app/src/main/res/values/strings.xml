@@ -1,7 +1,3 @@
 <resources>
     <string name="app_name">Legyen Ön is Milliomos</string>
-    <string name="kerdes_1">Melyik magyar várost nevezik a "vizek városának"?;Siófok;Tata;Szeged;Debrecen;B;</string>
-    <string name="kerdes_2">Melyik híres popsztár slágerei voltak a "Bad" illetve a "Black Or White"?;Michael Jackson;Rod Stewart;George Michael;Elton John;A;</string>
-    <string name="kerdes_3">Milyen lapot mutat fel a játékvezető a labdarúgásban kiállításkor?;rózsaszínt;sárgát;pirosat;feketét;C;</string>
-    <string name="kerdes_4">Melyik nem a francia kártya színe?;pikk;káró;tök;treff;C;</string>
 </resources>

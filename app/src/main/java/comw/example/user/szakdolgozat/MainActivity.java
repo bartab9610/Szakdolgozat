@@ -3,14 +3,12 @@ package comw.example.user.szakdolgozat;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -108,14 +106,13 @@ public class MainActivity extends AppCompatActivity
     {
         Intent Uj_jatek = new Intent(MainActivity.this,MainActivity_uj_jatek.class);
         startActivity(Uj_jatek);
-        finish();
+        // finish();
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out); // animáció -> ablak váltásnál nem fejülre helyezi a réteget hanem x-másodperc alatt megjelenik
     }
     public void Elert_eredmenyek_ablak()
     {
-        Intent Elert_eredmeny_ablak = new Intent(MainActivity.this,MainActivity_eredmenytabla.class);
+        Intent Elert_eredmeny_ablak = new Intent(MainActivity.this,MainActivity_eddigi_jatekok.class);
         startActivity(Elert_eredmeny_ablak);
-        finish();
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
     }
     public void Alert_dialogbox()

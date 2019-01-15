@@ -14,27 +14,36 @@
         android:background="@drawable/loim_hatter"
         android:layout_centerHorizontal="true"
         />
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Activity_2_textview_informacio"
-        android:text="A játék indításához kötelező egy becenév:"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="@color/Text_color_white"
+        android:id="@+id/Activity_2_imageview_avatar"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/ferfi"
         android:layout_below="@id/Activity_2_imageview_ikon"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Activity_2_button_avatar_valasztas"
+        android:text="Avatar választás"
+        android:textColor="@color/Text_color_white"
+        android:layout_centerVertical="true"
+        android:background="@drawable/gomb_style"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
         />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Activity_2_edittext_becenev"
-        android:textSize="24dp"
+        android:textSize="20dp"
+        android:textAlignment="center"
         android:textColor="@color/Text_color_white"
-        android:hint=". . . . . . . "
+        android:hint="Felhasználó név"
         android:textColorHint="@color/Text_color_white"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/Activity_2_textview_informacio"
+        android:layout_below="@id/Activity_2_imageview_avatar"
         />
     <Button
         android:layout_width="250dp"
@@ -46,7 +55,7 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/gomb_style"
         android:layout_below="@id/Activity_2_edittext_becenev"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         />
     <Button
         android:layout_width="wrap_content"
