@@ -16,6 +16,9 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class MainActivity_kerdesek extends AppCompatActivity
 {
@@ -37,6 +40,8 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private String Valasz_C;
     private String Valasz_D;
     private char Helyes_valasz_karakter;
+    private List<Kerdes> Kerdesek_lista = new ArrayList<>();
+    private Kerdes Kivalasztott_kerdes;
 
     private static int keslelteto = 2000;
 
@@ -56,7 +61,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Kerdes_ido_visszaszamlalo();
         try
         {
-            InputStream Kerdes_beolvasas = this.getResources().openRawResource(R.raw.kerdesek);
+            InputStream Kerdes_beolvasas = this.getResources().openRawResource(R.raw.szakdolgozat_kerdesek);
             BufferedReader br = new BufferedReader(new InputStreamReader(Kerdes_beolvasas));
 
             String Sor_vagas;
@@ -71,6 +76,8 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Valasz_C = Tomb_Kerdes_adatok[3];
                 Valasz_D = Tomb_Kerdes_adatok[4];
                 Helyes_valasz_karakter = Tomb_Kerdes_adatok[5].charAt(0);
+
+                Kerdesek_lista.add(new Kerdes(Kerdes,Valasz_A,Valasz_B,Valasz_C,Valasz_D,Helyes_valasz_karakter)); // feltöltjük a Kerdese_lista-t kérdésekkel
             }
             br.close();
         }
@@ -78,12 +85,18 @@ public class MainActivity_kerdesek extends AppCompatActivity
         {
             Toast.makeText(MainActivity_kerdesek.this,"Hiba: " + ex,Toast.LENGTH_SHORT).show();
         }
-        Activity_3_textview_kerdes.setText(Kerdes);
-        Button_valasz_A.setText(Valasz_A);
-        Button_valasz_B.setText(Valasz_B);
-        Button_valasz_C.setText(Valasz_C);
-        Button_valasz_D.setText(Valasz_D);
-        Button_valasz_D.setText(Valasz_D);
+        Random Veletlen_kerdes_kivalasztas = new Random();
+        int Kerdes_index = Veletlen_kerdes_kivalasztas.nextInt(Kerdesek_lista.size());
+        Kivalasztott_kerdes = Kerdesek_lista.get(Kerdes_index);
+
+        // Beállítjuk a véletlen generált kérdést a megfelelő helyre
+        Activity_3_textview_kerdes.setText(Kivalasztott_kerdes.getKerdes());
+        Button_valasz_A.setText(Kivalasztott_kerdes.getValasz_A());
+        Button_valasz_B.setText(Kivalasztott_kerdes.getValasz_B());
+        Button_valasz_C.setText(Kivalasztott_kerdes.getValasz_C());
+        Button_valasz_D.setText(Kivalasztott_kerdes.getValasz_D());
+        Helyes_valasz_karakter = Kivalasztott_kerdes.getHelyes_valasz();
+
         MainActivity_3_telefonos_segitseg.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -122,9 +135,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
+                            SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor szerkeszto = mentes.edit();
+                            int adat = mentes.getInt("teszt",0);
                             @Override
                             public void run()
                             {
+                                adat++;
+                                szerkeszto.putInt("teszt",adat);
+                                szerkeszto.commit();
                                 Button_valasz_A.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
@@ -246,9 +265,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_C.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
+                            SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor szerkeszto = mentes.edit();
+                            int adat = mentes.getInt("teszt",0);
                             @Override
                             public void run()
                             {
+                                adat++;
+                                szerkeszto.putInt("teszt",adat);
+                                szerkeszto.commit();
                                 Button_valasz_C.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
@@ -305,9 +330,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_D.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
+                            SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor szerkeszto = mentes.edit();
+                            int adat = mentes.getInt("teszt",0);
                             @Override
                             public void run()
                             {
+                                adat++;
+                                szerkeszto.putInt("teszt",adat);
+                                szerkeszto.commit();
                                 Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
