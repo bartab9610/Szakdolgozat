@@ -2,4 +2,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/Ferfi" android:title="Férfi" />
     <item android:id="@+id/No" android:title="Nő" />
+    <item android:id="@+id/Fenykep_keszites" android:title="Fénykép készítése.." />
 </menu>

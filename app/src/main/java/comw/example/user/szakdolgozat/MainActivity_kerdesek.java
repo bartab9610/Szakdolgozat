@@ -37,12 +37,8 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private String Valasz_C;
     private String Valasz_D;
     private char Helyes_valasz_karakter;
-    private char[] Rossz_valasz_karakter; // TESZT
 
     private static int keslelteto = 2000;
-
-    private CountDownTimer Visszaszamlalo;
-    private long Visszaszamlalo_ido = 90000;
 
     private String filename = "adatok";
 
@@ -58,28 +54,14 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Button_C_esemeny();
         Button_D_esemeny();
         Kerdes_ido_visszaszamlalo();
-        /*
-        String proba_kerdes = "Mennyi 1+1?;1;2;3;4;B";
-        String[] tomb = proba_kerdes.split(";");
-        String rendes_kerdes = tomb[0];
-        String rendes_a_valasz = tomb[1];
-        String rendes_b_valasz = tomb[2];
-        String rendes_c_valasz= tomb[3];
-        String rendes_d_valasz= tomb[4];
-        final String helyes_valasz = tomb[5];
-        Activity_3_textview_kerdes.setText(rendes_kerdes);
-        Button_valasz_A.setText(rendes_a_valasz);
-        Button_valasz_B.setText(rendes_b_valasz);
-        Button_valasz_C.setText(rendes_c_valasz);
-        Button_valasz_D.setText(rendes_d_valasz);
-        */
         try
         {
             InputStream Kerdes_beolvasas = this.getResources().openRawResource(R.raw.kerdesek);
             BufferedReader br = new BufferedReader(new InputStreamReader(Kerdes_beolvasas));
 
-            String Sor_vagas;while ((Sor_vagas = br.readLine()) != null)
-        {
+            String Sor_vagas;
+            while ((Sor_vagas = br.readLine()) != null)
+            {
 
                 Sor_vagas = br.readLine();
                 Tomb_Kerdes_adatok = Sor_vagas.split(";");
@@ -101,20 +83,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Button_valasz_B.setText(Valasz_B);
         Button_valasz_C.setText(Valasz_C);
         Button_valasz_D.setText(Valasz_D);
-
-        /*Activity_3_textview_kerdes.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                for (int i = 0; i < Kerdesek.length; i++)
-                {
-                    Random veletlen_kerdes = new Random();
-                    int kerdesek_id = veletlen_kerdes.nextInt(Kerdesek.length);
-                    Activity_3_textview_kerdes.setText(getResources().getString(Kerdesek[i]));
-                }
-            }
-        });*/
+        Button_valasz_D.setText(Valasz_D);
         MainActivity_3_telefonos_segitseg.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -148,7 +117,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 {
                     Button_valasz_A.setEnabled(false);
                     Button_valasz_B.setEnabled(false);
-                    Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                    Button_valasz_C.setEnabled(false);
                     Button_valasz_D.setEnabled(false);
                     Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
@@ -167,7 +136,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 {
                     Button_valasz_A.setEnabled(false);
                     Button_valasz_B.setEnabled(false);
-                    Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                    Button_valasz_C.setEnabled(false);
                     Button_valasz_D.setEnabled(false);
                     Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
@@ -205,12 +174,11 @@ public class MainActivity_kerdesek extends AppCompatActivity
             {
                 Button_valasz_A.setEnabled(false);
                 Button_valasz_B.setEnabled(false);
-                Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                Button_valasz_C.setEnabled(false);
                 Button_valasz_D.setEnabled(false);
                 if ('B' == Helyes_valasz_karakter)
                 {
                     Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                    //  Kivalasztott_valasz_valtas();
                     new Handler().postDelayed(new Runnable()
                         {
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
@@ -233,7 +201,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 {
                     Button_valasz_A.setEnabled(false);
                     Button_valasz_B.setEnabled(false);
-                    Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                    Button_valasz_C.setEnabled(false);
                     Button_valasz_D.setEnabled(false);
                     Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
@@ -271,7 +239,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
             {
                 Button_valasz_A.setEnabled(false);
                 Button_valasz_B.setEnabled(false);
-                Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                Button_valasz_C.setEnabled(false);
                 Button_valasz_D.setEnabled(false);
                 if ('C' == Helyes_valasz_karakter)
                 {
@@ -292,7 +260,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 {
                     Button_valasz_A.setEnabled(false);
                     Button_valasz_B.setEnabled(false);
-                    Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                    Button_valasz_C.setEnabled(false);
                     Button_valasz_D.setEnabled(false);
                     Button_valasz_C.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
@@ -330,7 +298,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
             {
                 Button_valasz_A.setEnabled(false);
                 Button_valasz_B.setEnabled(false);
-                Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                Button_valasz_C.setEnabled(false);
                 Button_valasz_D.setEnabled(false);
                 if ('D' == Helyes_valasz_karakter)
                 {
@@ -351,7 +319,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 {
                     Button_valasz_A.setEnabled(false);
                     Button_valasz_B.setEnabled(false);
-                    Button_valasz_C.setEnabled(false); // LEHET HOGY UJ KERDESNEL UJRA BE KELL ÁLLÍTANI HOGY LÁTHATÓ LEGYEN
+                    Button_valasz_C.setEnabled(false);
                     Button_valasz_D.setEnabled(false);
                     Button_valasz_D.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
@@ -412,30 +380,4 @@ public class MainActivity_kerdesek extends AppCompatActivity
             }
         }.start();
     }
-    /*
-    public void Kivalasztott_valasz_valtas()
-    {
-        new CountDownTimer(2000,500)
-        {
-            @Override
-            public void onTick(long l)
-            {
-                long seged = l/1000;
-                switch((int)seged)
-                {
-                    case 5: Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style); break;
-                    case 4: Button_valasz_B.setBackgroundResource(R.drawable.button_kerdesek_style); break;
-                    case 4: Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style); break;
-                    case 3: Button_valasz_B.setBackgroundResource(R.drawable.button_kerdesek_style); break;
-                    case 2: Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style); break;
-                    case 1: Button_valasz_B.setBackgroundResource(R.drawable.button_kerdesek_style); break;
-                }
-            }
-            @Override
-            public void onFinish()
-            {
-                Button_valasz_B.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
-            }
-        }.start();
-    }*/
 }

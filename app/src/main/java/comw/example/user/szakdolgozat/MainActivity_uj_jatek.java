@@ -1,8 +1,12 @@
 package comw.example.user.szakdolgozat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,6 +24,8 @@ public class MainActivity_uj_jatek extends AppCompatActivity
     private Button MainActivity_2_Button_avatarok;
     private ImageView MainActivity_2_Imageview_avatar;
     private EditText MainActivity_2_Edittext_felhasznalo_nev;
+
+    private int CAMERA_REQUEST_CODE = 123; // kamerakód
 
     @Override
     protected void onCreate(final Bundle savedInstanceState)
@@ -67,10 +73,17 @@ public class MainActivity_uj_jatek extends AppCompatActivity
                         if (menuItem.getTitle().equals("Férfi"))
                         {
                             MainActivity_2_Imageview_avatar.setBackgroundResource(R.drawable.ferfi);
+                            MainActivity_2_Imageview_avatar.setImageBitmap(null); // kinullázza a setImageBitmap-ot így nem lesz benne kép
+                        }
+                        else if (menuItem.getTitle().equals("Fénykép készítése.."))
+                        {
+                            Intent Avatar_keszites = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            startActivityForResult(Avatar_keszites,CAMERA_REQUEST_CODE);
                         }
                         else
                         {
                             MainActivity_2_Imageview_avatar.setBackgroundResource(R.drawable.no);
+                            MainActivity_2_Imageview_avatar.setImageBitmap(null); // kinullázza a setImageBitmap-ot így nem lesz benne kép
                         }
                         return true;
                     }
@@ -78,6 +91,16 @@ public class MainActivity_uj_jatek extends AppCompatActivity
                 Tobbi_avatar_valasztas.show();
             }
         });
+    }
+    @Override
+    protected void onActivityResult(int Kamera_kod, int eredmeny, Intent data)
+    {
+        if (Kamera_kod == CAMERA_REQUEST_CODE && Kamera_kod == Activity.RESULT_OK);
+        {
+            Bitmap Keszitett_kep = (Bitmap) data.getExtras().get("data");
+            MainActivity_2_Imageview_avatar.setImageBitmap(Keszitett_kep);
+            MainActivity_2_Imageview_avatar.setBackgroundResource(0); // beállítja a háttérkép elérését 0-ra így a készített kép lesz felül
+        }
     }
     public void Inicializalas()
     {
