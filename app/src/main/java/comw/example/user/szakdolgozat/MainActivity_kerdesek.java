@@ -40,6 +40,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private String Valasz_C;
     private String Valasz_D;
     private char Helyes_valasz_karakter;
+    private String Rossz_valasz_karakterek;
     private List<Kerdes> Kerdesek_lista = new ArrayList<>();
     private Kerdes Kivalasztott_kerdes;
 
@@ -67,7 +68,6 @@ public class MainActivity_kerdesek extends AppCompatActivity
             String Sor_vagas;
             while ((Sor_vagas = br.readLine()) != null)
             {
-
                 Sor_vagas = br.readLine();
                 Tomb_Kerdes_adatok = Sor_vagas.split(";");
                 Kerdes = Tomb_Kerdes_adatok[0];
@@ -76,8 +76,9 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Valasz_C = Tomb_Kerdes_adatok[3];
                 Valasz_D = Tomb_Kerdes_adatok[4];
                 Helyes_valasz_karakter = Tomb_Kerdes_adatok[5].charAt(0);
+                Rossz_valasz_karakterek = Tomb_Kerdes_adatok[6];
 
-                Kerdesek_lista.add(new Kerdes(Kerdes,Valasz_A,Valasz_B,Valasz_C,Valasz_D,Helyes_valasz_karakter)); // feltöltjük a Kerdese_lista-t kérdésekkel
+                Kerdesek_lista.add(new Kerdes(Kerdes,Valasz_A,Valasz_B,Valasz_C,Valasz_D,Helyes_valasz_karakter,Rossz_valasz_karakterek)); // feltöltjük a Kerdese_lista-t kérdésekkel
             }
             br.close();
         }
@@ -86,7 +87,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
             Toast.makeText(MainActivity_kerdesek.this,"Hiba: " + ex,Toast.LENGTH_SHORT).show();
         }
         Random Veletlen_kerdes_kivalasztas = new Random();
-        int Kerdes_index = Veletlen_kerdes_kivalasztas.nextInt(Kerdesek_lista.size());
+        final int Kerdes_index = Veletlen_kerdes_kivalasztas.nextInt(Kerdesek_lista.size());
         Kivalasztott_kerdes = Kerdesek_lista.get(Kerdes_index);
 
         // Beállítjuk a véletlen generált kérdést a megfelelő helyre
@@ -96,6 +97,8 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Button_valasz_C.setText(Kivalasztott_kerdes.getValasz_C());
         Button_valasz_D.setText(Kivalasztott_kerdes.getValasz_D());
         Helyes_valasz_karakter = Kivalasztott_kerdes.getHelyes_valasz();
+        Rossz_valasz_karakterek = Kivalasztott_kerdes.getRossz_valasz_karakterek();
+        Toast.makeText(MainActivity_kerdesek.this," " + Rossz_valasz_karakterek,Toast.LENGTH_SHORT).show();
 
         MainActivity_3_telefonos_segitseg.setOnClickListener(new View.OnClickListener()
         {
@@ -103,6 +106,68 @@ public class MainActivity_kerdesek extends AppCompatActivity
             public void onClick(View view)
             {
                 MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva);
+            }
+        });
+        MainActivity_3_felezes.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                MainActivity_3_felezes.setEnabled(false);
+                Random Veletlen_rossz_karakter_kivalasztas = new Random();
+                String Rossz_2_valasz_karakter = Kivalasztott_kerdes.getRossz_valasz_karakterek(); // GET-ter segítségével átadom a változónak a kérdés rossz válasz karaktereket
+                String Megszerzett_rossz_karakterek = "";
+                for (int i = 0; i < 2; i++)
+                {
+                    char Rossz_karakterek = Rossz_2_valasz_karakter.charAt(Veletlen_rossz_karakter_kivalasztas.nextInt(3)); // 3 -> mind a 3 karakteren végig megy és ezek közül választ
+                    Megszerzett_rossz_karakterek += Rossz_karakterek;
+                }
+                Toast.makeText(MainActivity_kerdesek.this," " + Megszerzett_rossz_karakterek,Toast.LENGTH_SHORT).show();
+                switch (Megszerzett_rossz_karakterek) // KÉT UGYANOLYAN KARAKTER MÉG BENNE VAN!!!!!!!!!!!!!!!!!!!!!!!!!!
+                {
+                    case "AB": // Ha "AB" igaz akkor lefut de ha "BA" is igaz akkor is lefut
+                        case "BA":
+                            Button_valasz_A.setText("");
+                            Button_valasz_B.setText("");
+                            Button_valasz_A.setEnabled(false);
+                            Button_valasz_B.setEnabled(false);
+                            break;
+                    case "AC":
+                        case "CA":
+                            Button_valasz_A.setText("");
+                            Button_valasz_C.setText("");
+                            Button_valasz_A.setEnabled(false);
+                            Button_valasz_C.setEnabled(false);
+                            break;
+                    case "AD":
+                        case "DA":
+                            Button_valasz_A.setText("");
+                            Button_valasz_D.setText("");
+                            Button_valasz_A.setEnabled(false);
+                            Button_valasz_D.setEnabled(false);
+                            break;
+                    case "BC":
+                        case "CB":
+                            Button_valasz_B.setText("");
+                            Button_valasz_C.setText("");
+                            Button_valasz_B.setEnabled(false);
+                            Button_valasz_C.setEnabled(false);
+                            break;
+                    case "BD":
+                        case "DB":
+                            Button_valasz_B.setText("");
+                            Button_valasz_D.setText("");
+                            Button_valasz_B.setEnabled(false);
+                            Button_valasz_D.setEnabled(false);
+                            break;
+                    case "CD":
+                        case "DC":
+                            Button_valasz_C.setText("");
+                            Button_valasz_D.setText("");
+                            Button_valasz_C.setEnabled(false);
+                            Button_valasz_D.setEnabled(false);
+                            break;
+                }
             }
         });
     }

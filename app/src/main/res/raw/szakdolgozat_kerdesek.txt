@@ -1,38 +1,42 @@
-﻿Hányas számú mezt viselte Puskás Öcsi az Aranycsapatban?;10-es;9-es;8-as;11-es;A
-Ki volt az első köztársasági elnök Magyarországon a II. világháború után?;Nagy Ferenc;Szakasits Árpád;Dobi István;Tildy Zoltán;D
-Ki közvetítette a legendás 6:3-as magyar-angol futballmérkőzést?;Vitray Tamás;Komjáthy György;Szepesi György;Ipper Pál;C
-Melyik olasz futball-klub játékosait becézik "zebráknak"?;Internazionale;Juventus;Torino;AC Milan;B
-A Naprendszer melyik bolygója van legtávolabb a Naptól?;Neptunusz;Jupiter;Plútó;Szaturnusz;C
-Mivel játsszák a römi nevű játékot?;dominóval;sakkfigurákkal;francia kártyával;magyar kártyával;C
-Hol található Borobudur, a világ legnagyobb buddhista templomegyüttese?;India;Indonézia;Thaiföld;Sri Lanka;B
-Melyik szervünkön hordhatunk hidat és koronát?;szem;fül;orr;fog;D
-Melyik amerikai elnök hirdette meg az Apolló űrprogramot?;Truman;Kennedy;Nixon;Eisenhower;B
-Ki volt Árpád vezér apja?;Álmos;Géza;Kurszán;Előd;A
-Minek a mérésére szolgált az orosz mértékegység, a pud?;űrtartalom;hosszúság;súly;terület;C
-Mi Drezda folyója?;Rajna;Spree;Elba;Odera;C
-Hány játékos küzd egy csapatból egyszerre a vízilabdában?;5;6;7;8;C
-Melyik évben rendezték meg az első Forma-1-es autóversenyt a Hungaroringen?;1982;1986;1989;1993;B
-Mi győz disznót az ismert mondás szerint?;sok kondás;sok böllér;sok lúd;sok kismalac;C
-A Biblia szerint hány éves volt Sára, amikor megszülte Izsákot?;75;90;120;333;B
-Mi a dinamit fő alkotóeleme?;kálium-szulfát;nitroglicerin;kén-dioxid;nátrium-klorid;B
-Hogyan nevezik tréfásan, amikor az ember valamelyik testrésze elzsibbad?;elbékásodik;elkutyásodik;elmackósodik;elmacskásodik;D
-Ki hajtotta végre a világ második űrutazását?;John Glenn;German Tyitov;Alekszej Leonov;Michael Collins;B
-Hogy hívták az Aranycsapat szövetségi kapitányát?;Illovszky Rudolf;Baróti Lajos;Sebes Gusztáv;Hoffer József;C
-Melyik fém latin neve az aurum?;arany;alumínium;ezüst;réz;A
-Mi Vietnam fővárosa?;Phenjan;Hanoi;Ho Si Minh-város;Hai Phong;B
-A matematikának melyik ága foglalkozik a szögfüggvényekkel?;algebra;trigonometria;függvénytan;kombinatorika;B
-Melyik afrikai országban található a Teleki-vulkán?;Tanzánia;Kenya;Szudán;Nigéria;B
-Kik voltak Fokváros alapítói?;német gyarmatosítók;portugál hajósok;holland kereskedők;angol kalózok;C
-Melyik együttes nagy slágere volt a "Yesterday" című dal?;Beatles;Rolling Stones;Guns N' Roses;Beach Boys;A
-Az alábbi európai miniállamok közül melyik köztársaság?;San Marino;Andorra;Monaco;Liechtenstein;A
-Az alábbiak közül melyik lehet szeladon?;egy kihalt őslény;egy ifjú udvarló;egy hatalmas kutya;egy hamvas hajadon;B
-Mi a címe Marco Ferreri híres botrányfilmjének: "A nagy …";piálás;balhé;zabálás;kurtizán;C
-Melyik országban született a világhírű gitáros, Carlos Santana?;Brazília;USA;Mexikó;Kuba;C
-Melyik állat nem kérődző?;kecske;zsiráf;tapír;szarvasmarha;C
-Melyik ország kormányfője volt Vidkun Quisling a II. világháború alatt?;Franciaország;Norvégia;Belgium;Olaszország;B
-Melyik együttesben játszott Peter Gabriel és Phil Collins?;Pink Floyd;Yes;Genesis;Dire Straits;C
-Milyen néven született Pelé a brazil labdarúgó?;Alessandro Rosa Vieira;Oscar dos Santos Emboaba Júnior;Edson Arantes do Nascimento;Francisco Román Alarcón Suárez;C
-Mit vizsgál az orvos, ha a mandibulát tapogatja?;az orrot;a homlokot;az állkapcsot;a térdet;C
-Milyen élelmiszer a rokfort?;szalámi;sajt;kolbász;túró;B
-Hogyan nevezik a női egyenjogúságért küzdő személyt?;filatelista;futurista;fatalista;feminista;D
-Melyik isten tiszteletére előadott szertartásokból alakult ki az ókori görög színjátszás?;Dionüszosz;Poszeidon;Hermész;Hádész;A
+﻿Hányas számú mezt viselte Puskás Öcsi az Aranycsapatban?;10-es;9-es;8-as;11-es;A;BCD
+Ki volt az első köztársasági elnök Magyarországon a II. világháború után?;Nagy Ferenc;Szakasits Árpád;Dobi István;Tildy Zoltán;D;ABC
+Ki közvetítette a legendás 6:3-as magyar-angol futballmérkőzést?;Vitray Tamás;Komjáthy György;Szepesi György;Ipper Pál;C;ABD
+Melyik olasz futball-klub játékosait becézik "zebráknak"?;Internazionale;Juventus;Torino;AC Milan;B;ACD
+A Naprendszer melyik bolygója van legtávolabb a Naptól?;Neptunusz;Jupiter;Plútó;Szaturnusz;C;ABD
+Mivel játsszák a römi nevű játékot?;dominóval;sakkfigurákkal;francia kártyával;magyar kártyával;C;ABD
+Hol található Borobudur, a világ legnagyobb buddhista templomegyüttese?;India;Indonézia;Thaiföld;Sri Lanka;B;ACD
+Melyik szervünkön hordhatunk hidat és koronát?;szem;fül;orr;fog;D;ABC
+Melyik amerikai elnök hirdette meg az Apolló űrprogramot?;Truman;Kennedy;Nixon;Eisenhower;B;ACD
+Ki volt Árpád vezér apja?;Álmos;Géza;Kurszán;Előd;A;BCD
+Minek a mérésére szolgált az orosz mértékegység, a pud?;űrtartalom;hosszúság;súly;terület;C;ABD
+Mi Drezda folyója?;Rajna;Spree;Elba;Odera;C;ABD
+Hány játékos küzd egy csapatból egyszerre a vízilabdában?;5;6;7;8;C;ABD
+Melyik évben rendezték meg az első Forma-1-es autóversenyt a Hungaroringen?;1982;1986;1989;1993;B;ACD
+Mi győz disznót az ismert mondás szerint?;sok kondás;sok böllér;sok lúd;sok kismalac;C;ABD
+A Biblia szerint hány éves volt Sára, amikor megszülte Izsákot?;75;90;120;333;B;ACD
+Mi a dinamit fő alkotóeleme?;kálium-szulfát;nitroglicerin;kén-dioxid;nátrium-klorid;B;ACD
+Hogyan nevezik tréfásan, amikor az ember valamelyik testrésze elzsibbad?;elbékásodik;elkutyásodik;elmackósodik;elmacskásodik;D;ABC
+Ki hajtotta végre a világ második űrutazását?;John Glenn;German Tyitov;Alekszej Leonov;Michael Collins;B;ACD
+Hogy hívták az Aranycsapat szövetségi kapitányát?;Illovszky Rudolf;Baróti Lajos;Sebes Gusztáv;Hoffer József;C;ABD
+Melyik fém latin neve az aurum?;arany;alumínium;ezüst;réz;A;BCD
+Mi Vietnam fővárosa?;Phenjan;Hanoi;Ho Si Minh-város;Hai Phong;B;ACD
+A matematikának melyik ága foglalkozik a szögfüggvényekkel?;algebra;trigonometria;függvénytan;kombinatorika;B;ACD
+Melyik afrikai országban található a Teleki-vulkán?;Tanzánia;Kenya;Szudán;Nigéria;B;ACD
+Kik voltak Fokváros alapítói?;német gyarmatosítók;portugál hajósok;holland kereskedők;angol kalózok;C;ABD
+Melyik együttes nagy slágere volt a "Yesterday" című dal?;Beatles;Rolling Stones;Guns N' Roses;Beach Boys;A;BCD
+Az alábbi európai miniállamok közül melyik köztársaság?;San Marino;Andorra;Monaco;Liechtenstein;A;BCD
+Az alábbiak közül melyik lehet szeladon?;egy kihalt őslény;egy ifjú udvarló;egy hatalmas kutya;egy hamvas hajadon;B;ACD
+Mi a címe Marco Ferreri híres botrányfilmjének: "A nagy …";piálás;balhé;zabálás;kurtizán;C;ABD
+Melyik országban született a világhírű gitáros, Carlos Santana?;Brazília;USA;Mexikó;Kuba;C;ABD
+Melyik állat nem kérődző?;kecske;zsiráf;tapír;szarvasmarha;C;ABD
+Melyik ország kormányfője volt Vidkun Quisling a II. világháború alatt?;Franciaország;Norvégia;Belgium;Olaszország;B;ACD
+Melyik együttesben játszott Peter Gabriel és Phil Collins?;Pink Floyd;Yes;Genesis;Dire Straits;C;ABD
+Milyen néven született Pelé a brazil labdarúgó?;Alessandro Rosa Vieira;Oscar dos Santos Emboaba Júnior;Edson Arantes do Nascimento;Francisco Román Alarcón Suárez;C;ABD
+Mit vizsgál az orvos, ha a mandibulát tapogatja?;az orrot;a homlokot;az állkapcsot;a térdet;C;ABD
+Milyen élelmiszer a rokfort?;szalámi;sajt;kolbász;túró;B;ACD
+Hogyan nevezik a női egyenjogúságért küzdő személyt?;filatelista;futurista;fatalista;feminista;D;ABC
+Melyik isten tiszteletére előadott szertartásokból alakult ki az ókori görög színjátszás?;Dionüszosz;Poszeidon;Hermész;Hádész;A;BCD
+Mit jelent a mondás? "Errare humanum est.";A kocka el van vetve;Ismétlés a tudás anyja;Tévedni emberi dolog;Fejétől bűzlik a hal;C;ABD
+Ki találta fel a fonográfot?;Thomas Edison;Benjamin Franklin;Puskás Tivadar;Robert Fulton;A;BCD
+Mi kell a snúrozás nevű játékhoz?;kártya;dobókocka;pénzérmék;labda;C;ABD
+Melyik évben született az Oscar-díjas színész Leonardo DiCaprio?;1972;1974;1977;1978;B;ACD
