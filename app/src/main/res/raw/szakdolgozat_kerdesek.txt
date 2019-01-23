@@ -40,3 +40,16 @@ Mit jelent a mondás? "Errare humanum est.";A kocka el van vetve;Ismétlés a tu
 Ki találta fel a fonográfot?;Thomas Edison;Benjamin Franklin;Puskás Tivadar;Robert Fulton;A;BCD
 Mi kell a snúrozás nevű játékhoz?;kártya;dobókocka;pénzérmék;labda;C;ABD
 Melyik évben született az Oscar-díjas színész Leonardo DiCaprio?;1972;1974;1977;1978;B;ACD
+Hol található Magyarország földrajzi középpontja?;Ópusztaszer;Pusztaszabolcs;Pusztavacs;Pusztavám;C;ABD
+Melyik növény rokonai a cédrusok?;vörösfenyő;kocsányos tölgy;bükk;szelídgesztenye;A;BCD
+Milyen a fád ember?;harsány;unalmas;szétszórt;ábrándozó;B;ACD
+Melyik ország területén található Fokföld?;Argentína;Ausztrália;Dél-afrikai Köztársaság;India;C;ABD
+Mi volt a mai Portugália területén fekvő római tartomány latin neve?;Lusitania;Caledonia;Lutécia;Hebrida;A;BCD
+Melyik égitest okozza az árapály jelenséget?;Vénusz;Mars;Jupiter;Hold;D;ABC
+Hány egész hangból áll egy egész oktáv?;10;8;12;6;B;ACD
+Melyik ország nem tagja a NATO-nak?;Írország;Izland;Lengyelország;Portugália;A;BCD
+A középkorra jellemző társadalmi rendet feudalizmusnak nevezzük. Mi volt a feudum?;hűbérbirtok;kapuadó;adófajta;királyi testület;A;BCD
+Kik ajándékozták a New York-i Szabadság-szobrot az Egyesült Államoknak?;az angol uralkodóház;a francia nép;az indián őslakók;a német nép;B;ACD
+Melyik ország külbirtoka Grönland?;Kanada;Svédország;Norvégia;Dánia;D;ABC
+Hány bit egy nibble?;2;4;6;8;B;ACD
+Kiről nevezték el a szendvicset?;egy ír tengerészről;egy francia énekesnőről;egy skót szakácsról;egy angol grófról;D;ABC

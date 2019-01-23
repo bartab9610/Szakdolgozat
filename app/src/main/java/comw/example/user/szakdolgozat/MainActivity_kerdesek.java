@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,6 +45,8 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private List<Kerdes> Kerdesek_lista = new ArrayList<>();
     private Kerdes Kivalasztott_kerdes;
 
+    private AlertDialog.Builder Alert_telefonos_segitseg;
+
     private static int keslelteto = 2000;
 
     private String filename = "adatok";
@@ -55,11 +58,13 @@ public class MainActivity_kerdesek extends AppCompatActivity
         setContentView(R.layout.activity_main_kerdesek);
 
         Inicializalas();
+
         Button_A_esemeny();
         Button_B_esemeny();
         Button_C_esemeny();
         Button_D_esemeny();
         Kerdes_ido_visszaszamlalo();
+
         try
         {
             InputStream Kerdes_beolvasas = this.getResources().openRawResource(R.raw.szakdolgozat_kerdesek);
@@ -68,7 +73,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
             String Sor_vagas;
             while ((Sor_vagas = br.readLine()) != null)
             {
-                Sor_vagas = br.readLine();
+                // Sor_vagas = br.readLine();
                 Tomb_Kerdes_adatok = Sor_vagas.split(";");
                 Kerdes = Tomb_Kerdes_adatok[0];
                 Valasz_A = Tomb_Kerdes_adatok[1];
@@ -87,7 +92,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
             Toast.makeText(MainActivity_kerdesek.this,"Hiba: " + ex,Toast.LENGTH_SHORT).show();
         }
         Random Veletlen_kerdes_kivalasztas = new Random();
-        final int Kerdes_index = Veletlen_kerdes_kivalasztas.nextInt(Kerdesek_lista.size());
+        int Kerdes_index = Veletlen_kerdes_kivalasztas.nextInt(Kerdesek_lista.size());
         Kivalasztott_kerdes = Kerdesek_lista.get(Kerdes_index);
 
         // Beállítjuk a véletlen generált kérdést a megfelelő helyre
@@ -106,6 +111,68 @@ public class MainActivity_kerdesek extends AppCompatActivity
             public void onClick(View view)
             {
                 MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva);
+                // MainActivity_3_telefonos_segitseg.setEnabled(false);
+                Alert_telefonos_segitseg = new AlertDialog.Builder(MainActivity_kerdesek.this);
+                Alert_telefonos_segitseg.setTitle("Telefonos segítség!").setMessage("A helyes válasz a: " + Kivalasztott_kerdes.getHelyes_valasz())
+                        .setCancelable(true) // Ne egyből írja majd ki a szöveget hanem folyamatosan
+                        .setIcon(R.drawable.telefonos_segitseg)
+                        .create();
+                Alert_telefonos_segitseg.show();
+                switch (Kivalasztott_kerdes.getHelyes_valasz())
+                {
+                    case 'A':
+                        Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                        new Handler().postDelayed(new Runnable()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    Button_valasz_A.setBackgroundResource(R.drawable.button_kerdesek_style);
+                                }
+                            }
+                            ,keslelteto);
+                        Button_A_esemeny();
+                        break;
+                    case 'B':
+                        Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                        new Handler().postDelayed(new Runnable()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    Button_valasz_B.setBackgroundResource(R.drawable.button_kerdesek_style);
+                                }
+                            }
+                            ,keslelteto);
+                        Button_B_esemeny();
+                        break;
+                    case 'C':
+                        Button_valasz_C.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                        new Handler().postDelayed(new Runnable()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    Button_valasz_C.setBackgroundResource(R.drawable.button_kerdesek_style);
+                                }
+                            }
+                            ,keslelteto);
+                        Button_C_esemeny();
+                        break;
+                    case 'D':
+                        Button_valasz_D.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                        new Handler().postDelayed(new Runnable()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    Button_valasz_D.setBackgroundResource(R.drawable.button_kerdesek_style);
+                                }
+                            }
+                            ,keslelteto);
+                        Button_D_esemeny();
+                        break;
+                }
             }
         });
         MainActivity_3_felezes.setOnClickListener(new View.OnClickListener()
@@ -113,7 +180,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                MainActivity_3_felezes.setEnabled(false);
+                // MainActivity_3_felezes.setEnabled(false);
                 Random Veletlen_rossz_karakter_kivalasztas = new Random();
                 String Rossz_2_valasz_karakter = Kivalasztott_kerdes.getRossz_valasz_karakterek(); // GET-ter segítségével átadom a változónak a kérdés rossz válasz karaktereket
                 String Megszerzett_rossz_karakterek = "";
@@ -453,14 +520,14 @@ public class MainActivity_kerdesek extends AppCompatActivity
     }
     public void Kerdes_ido_visszaszamlalo()
     {
-        new CountDownTimer(90000,1000) // 90000 -> 1:30perc
+        new CountDownTimer(91000,1000) // 90000 -> 1:30perc || 91000 hogy 1:30-ről induljon a visszaszámlálás
         {
             @Override
             public void onTick(long l)
             {
                 if (l / 1000 > 60)
                 {
-                    String szoveg = String.format("1:%02d",(l / 1000) - 60);
+                    String szoveg = String.format("1:%02d",(l / 1000) - 61); // 60 helyett 61 hogy 1:01 után ne 0:59 legyen hanem 1:00
                     Activity_3_textview_visszaszamlalo.setText(szoveg);
                 }
                 else
