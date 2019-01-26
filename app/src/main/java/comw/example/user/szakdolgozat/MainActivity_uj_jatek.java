@@ -124,11 +124,14 @@ public class MainActivity_uj_jatek extends AppCompatActivity
     }
     public void Eredmenyek_novelese_Mentes()
     {
-        String filename = "adatok";
-        int jo_valaszok_szam = 0;
+        String filename = "adatok"; // Ezen a néven található meg a DEVICE FILE EXPLORER részben a fájl mappájának share pref könyvtárában
+        int jo_valaszok_szam = 0; // ezeket az adatokat küldi tovább
+        int Telefonos_segitseg_szama = 0;
         SharedPreferences jo_valaszok_mentese = getSharedPreferences(filename, Context.MODE_PRIVATE);
         SharedPreferences.Editor szerkeszto = jo_valaszok_mentese.edit();
-        szerkeszto.putInt("teszt",jo_valaszok_szam);
+        szerkeszto.putInt("Jó válaszok száma",jo_valaszok_szam);
+        szerkeszto.putInt("Telefonos segítség",Telefonos_segitseg_szama);
+        // szerkeszto.clear(); // ezt meg kell majd hívni
         szerkeszto.commit();
     }
 }

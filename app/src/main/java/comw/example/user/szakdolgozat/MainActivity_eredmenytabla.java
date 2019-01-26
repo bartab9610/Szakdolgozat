@@ -72,7 +72,7 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
     {
         SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
         SharedPreferences.Editor szerkeszto = mentes.edit();
-        int adat = mentes.getInt("teszt",0);
+        int adat = mentes.getInt("Jó válaszok száma",0);
         switch (adat)
         {
             case 1:

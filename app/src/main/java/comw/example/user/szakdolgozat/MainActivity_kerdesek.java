@@ -50,6 +50,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private static int keslelteto = 2000;
 
     private String filename = "adatok";
+    private int adat = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -103,15 +104,30 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Button_valasz_D.setText(Kivalasztott_kerdes.getValasz_D());
         Helyes_valasz_karakter = Kivalasztott_kerdes.getHelyes_valasz();
         Rossz_valasz_karakterek = Kivalasztott_kerdes.getRossz_valasz_karakterek();
-        Toast.makeText(MainActivity_kerdesek.this," " + Rossz_valasz_karakterek,Toast.LENGTH_SHORT).show();
+        // Toast.makeText(MainActivity_kerdesek.this," " + Rossz_valasz_karakterek,Toast.LENGTH_SHORT).show();
+
+        // Telefonos segítség adat lekérdése és letiltása
+        SharedPreferences Telefonos_segitseg_lekeres = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        adat = Telefonos_segitseg_lekeres.getInt("Telefonos segítség",0);
+        // Toast.makeText(MainActivity_kerdesek.this,"Adat: " + adat,Toast.LENGTH_SHORT).show();
+        if (adat == 1) // megnézi hogy használtam-e már a telefonos segítséget és ha használtam akkor 1-re növeli az értéket és letiltja a funkciót
+        {
+            MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva);
+            MainActivity_3_telefonos_segitseg.setEnabled(false);
+        }
 
         MainActivity_3_telefonos_segitseg.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
+                SharedPreferences Telefonos_segitseg_lekeres = getSharedPreferences(filename, Context.MODE_PRIVATE);
+                SharedPreferences.Editor szerkeszto = Telefonos_segitseg_lekeres.edit();
+                adat++;
+                szerkeszto.putInt("Telefonos segítség", adat);
+                szerkeszto.commit();
                 MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva);
-                // MainActivity_3_telefonos_segitseg.setEnabled(false);
+                MainActivity_3_telefonos_segitseg.setEnabled(false);
                 Alert_telefonos_segitseg = new AlertDialog.Builder(MainActivity_kerdesek.this);
                 Alert_telefonos_segitseg.setTitle("Telefonos segítség!").setMessage("A helyes válasz a: " + Kivalasztott_kerdes.getHelyes_valasz())
                         .setCancelable(true) // Ne egyből írja majd ki a szöveget hanem folyamatosan
@@ -269,15 +285,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                         {
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
                             SharedPreferences.Editor szerkeszto = mentes.edit();
-                            int adat = mentes.getInt("teszt",0);
+                            int adat = mentes.getInt("Jó válaszok száma",0);
                             @Override
                             public void run()
                             {
                                 adat++;
-                                szerkeszto.putInt("teszt",adat);
+                                szerkeszto.putInt("Jó válaszok száma",adat);
                                 szerkeszto.commit();
                                 Button_valasz_A.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
-                                Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
                             }
                         }
@@ -307,7 +323,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                                     case 'D': Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                         break;
                                 }
-                                Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
                             }
                         }
@@ -334,15 +350,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                         {
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
                             SharedPreferences.Editor szerkeszto = mentes.edit();
-                            int adat = mentes.getInt("teszt",0);
+                            int adat = mentes.getInt("Jó válaszok száma",0);
                             @Override
                             public void run()
                             {
                                 adat++;
-                                szerkeszto.putInt("teszt",adat);
+                                szerkeszto.putInt("Jó válaszok száma",adat);
                                 szerkeszto.commit();
                                 Button_valasz_B.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
-                                Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz! " + adat, Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
                             }
                         }
@@ -372,7 +388,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                                     case 'D': Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                         break;
                                 }
-                                Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
                             }
                         }
@@ -399,15 +415,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                         {
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
                             SharedPreferences.Editor szerkeszto = mentes.edit();
-                            int adat = mentes.getInt("teszt",0);
+                            int adat = mentes.getInt("Jó válaszok száma",0);
                             @Override
                             public void run()
                             {
                                 adat++;
-                                szerkeszto.putInt("teszt",adat);
+                                szerkeszto.putInt("Jó válaszok száma",adat);
                                 szerkeszto.commit();
                                 Button_valasz_C.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
-                                Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
                             }
                         }
@@ -437,7 +453,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                                     case 'D': Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                         break;
                                 }
-                                Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
                             }
                         }
@@ -464,15 +480,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                         {
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
                             SharedPreferences.Editor szerkeszto = mentes.edit();
-                            int adat = mentes.getInt("teszt",0);
+                            int adat = mentes.getInt("Jó válaszok száma",0);
                             @Override
                             public void run()
                             {
                                 adat++;
-                                szerkeszto.putInt("teszt",adat);
+                                szerkeszto.putInt("Jó válaszok száma",adat);
                                 szerkeszto.commit();
                                 Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
-                                Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
                             }
                         }
@@ -502,7 +518,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                                     case 'D': Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                         break;
                                 }
-                                Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(MainActivity_kerdesek.this, "Hibás válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
                             }
                         }
