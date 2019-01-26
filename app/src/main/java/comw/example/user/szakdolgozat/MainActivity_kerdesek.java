@@ -51,6 +51,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
 
     private String filename = "adatok";
     private int adat = 0;
+    private int Felezes_segitseg_szama = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -104,18 +105,26 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Button_valasz_D.setText(Kivalasztott_kerdes.getValasz_D());
         Helyes_valasz_karakter = Kivalasztott_kerdes.getHelyes_valasz();
         Rossz_valasz_karakterek = Kivalasztott_kerdes.getRossz_valasz_karakterek();
-        // Toast.makeText(MainActivity_kerdesek.this," " + Rossz_valasz_karakterek,Toast.LENGTH_SHORT).show();
+        // Toast.makeText(MainActivity_kerdesek.this,"Kérdések száma: " + Kerdesek_lista.size(),Toast.LENGTH_SHORT).show();
+        // Toast.makeText(MainActivity_kerdesek.this,"Rossz válasz karakterek: " + Rossz_valasz_karakterek,Toast.LENGTH_SHORT).show();
 
-        // Telefonos segítség adat lekérdése és letiltása
+        // Telefonos segítség adat lekérdezése és letiltása
         SharedPreferences Telefonos_segitseg_lekeres = getSharedPreferences(filename, Context.MODE_PRIVATE);
         adat = Telefonos_segitseg_lekeres.getInt("Telefonos segítség",0);
-        // Toast.makeText(MainActivity_kerdesek.this,"Adat: " + adat,Toast.LENGTH_SHORT).show();
         if (adat == 1) // megnézi hogy használtam-e már a telefonos segítséget és ha használtam akkor 1-re növeli az értéket és letiltja a funkciót
         {
             MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva);
             MainActivity_3_telefonos_segitseg.setEnabled(false);
         }
 
+        // Felezés segítség adat lekérdezése és letiltása
+        SharedPreferences Felezes_segitseg_lekeres = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        Felezes_segitseg_szama = Felezes_segitseg_lekeres.getInt("Felezés segítség",0);
+        if (Felezes_segitseg_szama == 1)
+        {
+            MainActivity_3_felezes.setBackgroundResource(R.drawable.felezes_tiltva);
+            MainActivity_3_felezes.setEnabled(false);
+        }
         MainActivity_3_telefonos_segitseg.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -196,6 +205,12 @@ public class MainActivity_kerdesek extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                SharedPreferences Felezes_segitseg_lekeres = getSharedPreferences(filename, Context.MODE_PRIVATE);
+                SharedPreferences.Editor szerkeszto = Felezes_segitseg_lekeres.edit();
+                Felezes_segitseg_szama++;
+                szerkeszto.putInt("Felezés segítség", Felezes_segitseg_szama);
+                szerkeszto.commit();
+                MainActivity_3_felezes.setBackgroundResource(R.drawable.felezes_tiltva);
                 // MainActivity_3_felezes.setEnabled(false);
                 Random Veletlen_rossz_karakter_kivalasztas = new Random();
                 String Rossz_2_valasz_karakter = Kivalasztott_kerdes.getRossz_valasz_karakterek(); // GET-ter segítségével átadom a változónak a kérdés rossz válasz karaktereket
@@ -205,7 +220,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     char Rossz_karakterek = Rossz_2_valasz_karakter.charAt(Veletlen_rossz_karakter_kivalasztas.nextInt(3)); // 3 -> mind a 3 karakteren végig megy és ezek közül választ
                     Megszerzett_rossz_karakterek += Rossz_karakterek;
                 }
-                Toast.makeText(MainActivity_kerdesek.this," " + Megszerzett_rossz_karakterek,Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity_kerdesek.this," " + Megszerzett_rossz_karakterek,Toast.LENGTH_SHORT).show();
                 switch (Megszerzett_rossz_karakterek) // KÉT UGYANOLYAN KARAKTER MÉG BENNE VAN!!!!!!!!!!!!!!!!!!!!!!!!!!
                 {
                     case "AB": // Ha "AB" igaz akkor lefut de ha "BA" is igaz akkor is lefut

@@ -53,3 +53,27 @@ Kik ajándékozták a New York-i Szabadság-szobrot az Egyesült Államoknak?;az
 Melyik ország külbirtoka Grönland?;Kanada;Svédország;Norvégia;Dánia;D;ABC
 Hány bit egy nibble?;2;4;6;8;B;ACD
 Kiről nevezték el a szendvicset?;egy ír tengerészről;egy francia énekesnőről;egy skót szakácsról;egy angol grófról;D;ABC
+Minek a becézése Al Capone nevében az "Al"?;Alfred;Alphonse;Alan;Alec;B;ACD
+Mi a csibuk?;pipa;nyereg;hangszer;cipész szerszám;A;BCD
+Milyen "deréknak" nevezik a nagyon karcsú női derekat?;szúnyog;bolha;darázs;kullancs;C;ABD
+Mi Svájc fővárosa?;Zürich;Basel;Bern;Genf;C;ABD
+Hogy nevezik a sörfogyasztást segítő ételeket?;sörszám;sörkorcsolya;sörtrojka;sörcsúszka;B;ACD
+Milyen "hús" egy nyárson sütött étel neve?;pandúrhús;tolvajhús;betyárhús;rablóhús;D;ABC
+Hányszoros Bajnokok Ligája győztes volt a Real Madrid 2016-ban?;10;12;11;13;C;ABD
+Melyik város hídja a Brooklyn híd?;Boston;Los Angeles;Washington;New York;D;ABC
+Mi a cseppkő alapanyaga?;agyag;mészkő;gránit;kvarc;B;ACD
+Melyik harcászati eszköz másik neve a srapnel?;harckocsi;bombázó;repeszgránát;akna;C;ABD
+Mit csináltak a pennával?;fogukhoz verték;lovagoltak rajta;vívtak vele;írtak vele;D;ABC
+Hány évesen lett tábornok Bonaparte Napóleon?;24;38;45;52;A;BCD
+Melyik szervünkben található a szivárványhártya?;fül;szív;szem;agy;C;ABD
+Melyik állatnév előtagja lehet még a pézsma a pockon kívül?;rája;szarvas;mókus;gödény;B;ACD
+Melyik filmet nem Christopher Nolan rendezte?;Csillagok között;Eredet;Tűzben edzett férfi;Az acélember;C;ABD
+Melyik magyar labdarúgó klub legendás csatára volt Bene Ferenc?;Ferencváros;Vasas;Újpesti Dózsa;MTK;C;ABD
+Mely évek fordulóján zajlott a sztálingrádi csata?;1941-1942;1942-1943;1943-1944;1944-1945;B;ACD
+Melyik évben nem volt világbajnok Michael Schumacher?;1995;1998;2000;2001;B;ACD
+Mi a hivatalos pénznem Indonéziában?;dollár;font;rúpia;ringgit;C;ABD
+Melyik spanyol labdarúgó "beceneve" a Keselyű?;Alfredo di Stefano;Amaneio Amaro;Carlos Santillana;Emilio Butragueno;D;ABC
+Legkevesebb hány szervával lehet nyerni a teniszben egy játékot?;három;négy;öt;hat;B;ACD
+Milyen néven vált híressé Ricardo Izecson dos Santos Leite?;Rivaldo;Quaresma;Robinho;Kaká;D;ABC
+Hány piros és fehér sáv van az Amerikai Egyesült Államok zászlaján?;6 piros 6 fehér;6 piros 7 fehér;7 piros 6 fehér;7 piros 7 fehér;C;ABD
+Mit jelent magyarul Buenos Aires neve?;isten hozott;jó napot kívánok;szép kilátás;jó szelek;D;ABC

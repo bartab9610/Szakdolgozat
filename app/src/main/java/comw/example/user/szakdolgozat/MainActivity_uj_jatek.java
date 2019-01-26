@@ -126,12 +126,14 @@ public class MainActivity_uj_jatek extends AppCompatActivity
     {
         String filename = "adatok"; // Ezen a néven található meg a DEVICE FILE EXPLORER részben a fájl mappájának share pref könyvtárában
         int jo_valaszok_szam = 0; // ezeket az adatokat küldi tovább
-        int Telefonos_segitseg_szama = 0;
+        int Telefonos_segitseg_szama = 0; // ezeket az adatokat küldi tovább
+        int Felezes_segitseg_szama = 0; // ezeket az adatokat küldi tovább
         SharedPreferences jo_valaszok_mentese = getSharedPreferences(filename, Context.MODE_PRIVATE);
         SharedPreferences.Editor szerkeszto = jo_valaszok_mentese.edit();
         szerkeszto.putInt("Jó válaszok száma",jo_valaszok_szam);
         szerkeszto.putInt("Telefonos segítség",Telefonos_segitseg_szama);
-        // szerkeszto.clear(); // ezt meg kell majd hívni
+        szerkeszto.putInt("Felezés segítség",Felezes_segitseg_szama);
+        szerkeszto.clear(); // Minden új játék kezdésnél ez kitörli az elmentett értékeket és 0-ra állítja így minden alaphelyzetből indul
         szerkeszto.commit();
     }
 }
