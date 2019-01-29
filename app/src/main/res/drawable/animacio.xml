@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
     <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
         android:oneshot="true">
+            <item android:drawable="@drawable/loim_hatter_5"
+                android:duration="200" />
+            <item android:drawable="@drawable/loim_hatter_10"
+                android:duration="200" />
+            <item android:drawable="@drawable/loim_hatter_20"
+                android:duration="200" />
+            <item android:drawable="@drawable/loim_hatter_30"
+                android:duration="200" />
+            <item android:drawable="@drawable/loim_hatter_40"
+                android:duration="200" />
+            <item android:drawable="@drawable/loim_hatter_50"
+                android:duration="200" />
+            <item android:drawable="@drawable/loim_hatter_60"
+                android:duration="200" />
+            <item android:drawable="@drawable/loim_hatter_70"
+                android:duration="200" />
+            <item android:drawable="@drawable/loim_hatter_80"
+                android:duration="200" />
+            <item android:drawable="@drawable/loim_hatter_90"
+                android:duration="200" />
             <item android:drawable="@drawable/loim_hatter"
-                android:duration="2000" />
-            <item android:drawable="@drawable/loim_ikon"
-                android:duration="2000" />
-            <item android:drawable="@drawable/felezes"
-                android:duration="2000" />
-            <item android:drawable="@drawable/plusz_egy_perc"
-                android:duration="2000" />
+                android:duration="500" />
     </animation-list>

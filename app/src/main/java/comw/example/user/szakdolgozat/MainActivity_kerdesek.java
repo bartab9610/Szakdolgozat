@@ -1,6 +1,7 @@
 package comw.example.user.szakdolgozat;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
@@ -46,6 +47,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private Kerdes Kivalasztott_kerdes;
 
     private AlertDialog.Builder Alert_telefonos_segitseg;
+    private AlertDialog.Builder Alert_lejart_ido;
 
     private static int keslelteto = 2000;
 
@@ -115,15 +117,6 @@ public class MainActivity_kerdesek extends AppCompatActivity
         {
             MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva);
             MainActivity_3_telefonos_segitseg.setEnabled(false);
-        }
-
-        // Felezés segítség adat lekérdezése és letiltása
-        SharedPreferences Felezes_segitseg_lekeres = getSharedPreferences(filename, Context.MODE_PRIVATE);
-        Felezes_segitseg_szama = Felezes_segitseg_lekeres.getInt("Felezés segítség",0);
-        if (Felezes_segitseg_szama == 1)
-        {
-            MainActivity_3_felezes.setBackgroundResource(R.drawable.felezes_tiltva);
-            MainActivity_3_felezes.setEnabled(false);
         }
         MainActivity_3_telefonos_segitseg.setOnClickListener(new View.OnClickListener()
         {
@@ -200,6 +193,14 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 }
             }
         });
+        // Felezés segítség adat lekérdezése és letiltása
+        SharedPreferences Felezes_segitseg_lekeres = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        Felezes_segitseg_szama = Felezes_segitseg_lekeres.getInt("Felezés segítség",0);
+        if (Felezes_segitseg_szama == 1)
+        {
+            MainActivity_3_felezes.setBackgroundResource(R.drawable.felezes_tiltva);
+            MainActivity_3_felezes.setEnabled(false);
+        }
         MainActivity_3_felezes.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -207,11 +208,11 @@ public class MainActivity_kerdesek extends AppCompatActivity
             {
                 SharedPreferences Felezes_segitseg_lekeres = getSharedPreferences(filename, Context.MODE_PRIVATE);
                 SharedPreferences.Editor szerkeszto = Felezes_segitseg_lekeres.edit();
-                Felezes_segitseg_szama++;
-                szerkeszto.putInt("Felezés segítség", Felezes_segitseg_szama);
-                szerkeszto.commit();
+                Felezes_segitseg_szama++; // gomblenyomásra az értéket megnöveli 1-re
+                szerkeszto.putInt("Felezés segítség", Felezes_segitseg_szama); // kiírja az adatot az adatok.xml-be
+                szerkeszto.commit(); // commitolja így fríssítve lesz ami alapból 0
                 MainActivity_3_felezes.setBackgroundResource(R.drawable.felezes_tiltva);
-                // MainActivity_3_felezes.setEnabled(false);
+                MainActivity_3_felezes.setEnabled(false);
                 Random Veletlen_rossz_karakter_kivalasztas = new Random();
                 String Rossz_2_valasz_karakter = Kivalasztott_kerdes.getRossz_valasz_karakterek(); // GET-ter segítségével átadom a változónak a kérdés rossz válasz karaktereket
                 String Megszerzett_rossz_karakterek = "";
@@ -551,27 +552,56 @@ public class MainActivity_kerdesek extends AppCompatActivity
     }
     public void Kerdes_ido_visszaszamlalo()
     {
-        new CountDownTimer(91000,1000) // 90000 -> 1:30perc || 91000 hogy 1:30-ről induljon a visszaszámlálás
+        new CountDownTimer(62000,1000) // 90000 -> 1:30perc || 91000 hogy 1:30-ről induljon a visszaszámlálás
         {
             @Override
             public void onTick(long l)
             {
                 if (l / 1000 > 60)
                 {
-                    String szoveg = String.format("1:%02d",(l / 1000) - 61); // 60 helyett 61 hogy 1:01 után ne 0:59 legyen hanem 1:00
-                    Activity_3_textview_visszaszamlalo.setText(szoveg);
+                    String hatralevo_id = String.format("1:%02d",(l / 1000) - 61); // 60 helyett 61 hogy 1:01 után ne 0:59 legyen hanem 1:00
+                    Activity_3_textview_visszaszamlalo.setText(hatralevo_id);
                 }
                 else
                 {
-                    String szoveg = String.format("0:%02d",(l / 1000) -1);
-                    Activity_3_textview_visszaszamlalo.setText(szoveg);
+                    String hatralevo_id= String.format("0:%02d",(l / 1000) -1);
+                    Activity_3_textview_visszaszamlalo.setText(hatralevo_id);
                 }
             }
             @Override
             public void onFinish()
             {
                 Activity_3_textview_visszaszamlalo.setText("0:00");
+                Alert_lejart_ido = new AlertDialog.Builder(MainActivity_kerdesek.this);
+                Alert_lejart_ido.setTitle("Az idő lejárt!").setMessage("Nem tudtál 1 percen belül válaszolni a kérdésre, így a játéknak vége")
+                        .setPositiveButton("Kilépés", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i)
+                            {
+                                finish(); // ITT MÉG NEM BIZTOS HOGY EZ LESZ!!!!!!!!!!!!!!!!
+                            }
+                        })
+                        .setNegativeButton("Új játék indítása", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i)
+                            {
+                                Uj_jatek_kezdese();
+                            }
+                        })
+                        .setCancelable(false) // Ne egyből írja majd ki a szöveget hanem folyamatosan
+                        .setIcon(R.drawable.figyelem) // másik kép!!
+                        .create();
+                Alert_lejart_ido.show();
             }
         }.start();
+    }
+    public void Uj_jatek_kezdese()
+    {
+        Intent Uj_jatek = new Intent(MainActivity_kerdesek.this,MainActivity_uj_jatek.class);
+        startActivity(Uj_jatek);
+        finish();
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
     }
 }
