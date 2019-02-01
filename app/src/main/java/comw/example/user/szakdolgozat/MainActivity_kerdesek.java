@@ -49,6 +49,8 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private AlertDialog.Builder Alert_telefonos_segitseg;
     private AlertDialog.Builder Alert_lejart_ido;
 
+    private CountDownTimer Visszaszamlalo;
+
     private static int keslelteto = 2000;
 
     private String filename = "adatok";
@@ -68,7 +70,6 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Button_C_esemeny();
         Button_D_esemeny();
         Kerdes_ido_visszaszamlalo();
-
         try
         {
             InputStream Kerdes_beolvasas = this.getResources().openRawResource(R.raw.szakdolgozat_kerdesek);
@@ -290,13 +291,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                Button_valasz_A.setEnabled(false);
+                Button_valasz_B.setEnabled(false);
+                Button_valasz_C.setEnabled(false);
+                Button_valasz_D.setEnabled(false);
+                Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Visszaszamlalo.cancel(); // leállítja a gomb lenyomására az időt így nem pörög továbbí
+
                 if ('A' == Helyes_valasz_karakter)
                 {
-                    Button_valasz_A.setEnabled(false);
-                    Button_valasz_B.setEnabled(false);
-                    Button_valasz_C.setEnabled(false);
-                    Button_valasz_D.setEnabled(false);
-                    Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
@@ -359,9 +362,11 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Button_valasz_B.setEnabled(false);
                 Button_valasz_C.setEnabled(false);
                 Button_valasz_D.setEnabled(false);
+                Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Visszaszamlalo.cancel(); // leállítja a gomb lenyomására az időt így nem pörög továbbí
+
                 if ('B' == Helyes_valasz_karakter)
                 {
-                    Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
@@ -424,9 +429,11 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Button_valasz_B.setEnabled(false);
                 Button_valasz_C.setEnabled(false);
                 Button_valasz_D.setEnabled(false);
+                Button_valasz_C.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Visszaszamlalo.cancel(); // leállítja a gomb lenyomására az időt így nem pörög továbbí
+
                 if ('C' == Helyes_valasz_karakter)
                 {
-                    Button_valasz_C.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
@@ -489,9 +496,11 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Button_valasz_B.setEnabled(false);
                 Button_valasz_C.setEnabled(false);
                 Button_valasz_D.setEnabled(false);
+                Button_valasz_D.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Visszaszamlalo.cancel(); // leállítja a gomb lenyomására az időt így nem pörög továbbí
+
                 if ('D' == Helyes_valasz_karakter)
                 {
-                    Button_valasz_D.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
@@ -552,7 +561,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
     }
     public void Kerdes_ido_visszaszamlalo()
     {
-        new CountDownTimer(62000,1000) // 90000 -> 1:30perc || 91000 hogy 1:30-ről induljon a visszaszámlálás
+        Visszaszamlalo = new CountDownTimer (62000,1000) // 90000 -> 1:30perc || 91000 hogy 1:30-ről induljon a visszaszámlálás
         {
             @Override
             public void onTick(long l)

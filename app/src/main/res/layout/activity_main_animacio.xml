@@ -11,7 +11,7 @@
         android:layout_width="350dp"
         android:layout_height="300dp"
         android:id="@+id/Activity_5_indito_animacio"
-        android:background="@drawable/animacio"
+        android:background="@drawable/loim_hatter"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         />
