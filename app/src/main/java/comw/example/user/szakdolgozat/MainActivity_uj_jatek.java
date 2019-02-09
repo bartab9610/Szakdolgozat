@@ -128,11 +128,13 @@ public class MainActivity_uj_jatek extends AppCompatActivity
         int jo_valaszok_szam = 0; // ezeket az adatokat küldi tovább
         int Telefonos_segitseg_szama = 0; // ezeket az adatokat küldi tovább
         int Felezes_segitseg_szama = 0; // ezeket az adatokat küldi tovább
+        int Nezoi_segitseg_szama = 0; // ezeket az adatokat küldi tovább
         SharedPreferences jo_valaszok_mentese = getSharedPreferences(filename, Context.MODE_PRIVATE);
         SharedPreferences.Editor szerkeszto = jo_valaszok_mentese.edit();
         szerkeszto.putInt("Jó válaszok száma",jo_valaszok_szam);
         szerkeszto.putInt("Telefonos segítség",Telefonos_segitseg_szama);
         szerkeszto.putInt("Felezés segítség",Felezes_segitseg_szama);
+        szerkeszto.putInt("Nézői segítség",Nezoi_segitseg_szama);
         szerkeszto.clear(); // Minden új játék kezdésnél ez kitörli az elmentett értékeket és 0-ra állítja így minden alaphelyzetből indul
         szerkeszto.commit();
     }

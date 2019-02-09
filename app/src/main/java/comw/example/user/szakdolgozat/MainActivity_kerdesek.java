@@ -56,6 +56,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private String filename = "adatok";
     private int adat = 0;
     private int Felezes_segitseg_szama = 0;
+    private int Nezoi_segitseg_szama = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -116,7 +117,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
         adat = Telefonos_segitseg_lekeres.getInt("Telefonos segítség",0);
         if (adat == 1) // megnézi hogy használtam-e már a telefonos segítséget és ha használtam akkor 1-re növeli az értéket és letiltja a funkciót
         {
-            MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva);
+            MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva_szinezett);
             MainActivity_3_telefonos_segitseg.setEnabled(false);
         }
         MainActivity_3_telefonos_segitseg.setOnClickListener(new View.OnClickListener()
@@ -129,7 +130,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 adat++;
                 szerkeszto.putInt("Telefonos segítség", adat);
                 szerkeszto.commit();
-                MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva);
+                MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva_szinezett);
                 MainActivity_3_telefonos_segitseg.setEnabled(false);
                 Alert_telefonos_segitseg = new AlertDialog.Builder(MainActivity_kerdesek.this);
                 Alert_telefonos_segitseg.setTitle("Telefonos segítség!").setMessage("A helyes válasz a: " + Kivalasztott_kerdes.getHelyes_valasz())
@@ -199,7 +200,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Felezes_segitseg_szama = Felezes_segitseg_lekeres.getInt("Felezés segítség",0);
         if (Felezes_segitseg_szama == 1)
         {
-            MainActivity_3_felezes.setBackgroundResource(R.drawable.felezes_tiltva);
+            MainActivity_3_felezes.setBackgroundResource(R.drawable.felezes_tiltva_szinezett);
             MainActivity_3_felezes.setEnabled(false);
         }
         MainActivity_3_felezes.setOnClickListener(new View.OnClickListener()
@@ -212,7 +213,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Felezes_segitseg_szama++; // gomblenyomásra az értéket megnöveli 1-re
                 szerkeszto.putInt("Felezés segítség", Felezes_segitseg_szama); // kiírja az adatot az adatok.xml-be
                 szerkeszto.commit(); // commitolja így fríssítve lesz ami alapból 0
-                MainActivity_3_felezes.setBackgroundResource(R.drawable.felezes_tiltva);
+                MainActivity_3_felezes.setBackgroundResource(R.drawable.felezes_tiltva_szinezett);
                 MainActivity_3_felezes.setEnabled(false);
                 Random Veletlen_rossz_karakter_kivalasztas = new Random();
                 String Rossz_2_valasz_karakter = Kivalasztott_kerdes.getRossz_valasz_karakterek(); // GET-ter segítségével átadom a változónak a kérdés rossz válasz karaktereket
@@ -268,6 +269,29 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             Button_valasz_D.setEnabled(false);
                             break;
                 }
+            }
+        });
+        // Nézői segítség adat lekérdezése és letiltása
+        SharedPreferences Nezoi_segitseg_lekeres = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        Nezoi_segitseg_szama = Nezoi_segitseg_lekeres.getInt("Nézői segítség",0);
+        if (Nezoi_segitseg_szama == 1)
+        {
+            MainActivity_3_nezoi_segitseg.setBackgroundResource(R.drawable.nezoi_segitseg_tiltas);
+            MainActivity_3_nezoi_segitseg.setEnabled(false);
+        }
+        MainActivity_3_nezoi_segitseg.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                MainActivity_3_nezoi_segitseg.setBackgroundResource(R.drawable.nezoi_segitseg_tiltas);
+                MainActivity_3_nezoi_segitseg.setEnabled(false);
+                SharedPreferences Nezoi_segitseg_lekeres = getSharedPreferences(filename, Context.MODE_PRIVATE);
+                SharedPreferences.Editor szerkeszto = Nezoi_segitseg_lekeres.edit();
+                Nezoi_segitseg_szama++; // gomblenyomásra az értéket megnöveli 1-re
+                szerkeszto.putInt("Nézői segítség", Nezoi_segitseg_szama); // kiírja az adatot az adatok.xml-be
+                szerkeszto.commit(); // commitolja így fríssítve lesz ami alapból 0
+                // IDE JÖN A DINAMIKUS LINEARLAYOUT ÉS ABBA BELE A GRAFIKON!!!!
             }
         });
     }
@@ -588,7 +612,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i)
                             {
-                                finish(); // ITT MÉG NEM BIZTOS HOGY EZ LESZ!!!!!!!!!!!!!!!!
+                                finish(); // nem zárja be az egész alkalmazást hanem vissza dobja a MainActivity_uj_jatek-ra!!!!!!!!!!!!!!!
                             }
                         })
                         .setNegativeButton("Új játék indítása", new DialogInterface.OnClickListener()
@@ -608,9 +632,9 @@ public class MainActivity_kerdesek extends AppCompatActivity
     }
     public void Uj_jatek_kezdese()
     {
-        Intent Uj_jatek = new Intent(MainActivity_kerdesek.this,MainActivity_uj_jatek.class);
+        Intent Uj_jatek = new Intent(MainActivity_kerdesek.this, MainActivity_uj_jatek.class);
         startActivity(Uj_jatek);
         finish();
-        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 }

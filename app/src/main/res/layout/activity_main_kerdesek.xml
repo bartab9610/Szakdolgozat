@@ -89,7 +89,7 @@
            android:layout_width="wrap_content"
            android:layout_height="65dp"
            android:id="@+id/Activity_3_imagebutton_telefonon_segitseg"
-           android:background="@drawable/telefonos_segitseg"
+           android:background="@drawable/telefonos_segitseg_szinezett"
            android:layout_marginTop="17dp"
            android:layout_marginBottom="35dp"
            />
@@ -97,7 +97,7 @@
            android:layout_width="65dp"
            android:layout_height="65dp"
            android:id="@+id/Activity_3_imagebutton_felezes"
-           android:background="@drawable/felezes_2"
+           android:background="@drawable/felezes_2_szinezett"
            />
    </LinearLayout>
    <LinearLayout
@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="65dp"
             android:id="@+id/Activity_3_imagebutton_nezoi_segitseg"
-            android:background="@drawable/nezoi_segitseg"
+            android:background="@drawable/nezoi_segitseg_szerkeztett_meretezett"
             android:layout_marginTop="17dp"
             android:layout_marginBottom="35dp"
             />

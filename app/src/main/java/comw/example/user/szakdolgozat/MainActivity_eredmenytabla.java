@@ -6,9 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity_eredmenytabla extends AppCompatActivity
 {
@@ -29,6 +27,7 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
     private String filename = "adatok";
 
     private static int keslelteto = 500;
+    private static int Kovetkezo_kerdes = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,13 +37,14 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
 
         Inicializalas();
         Nyeremeny_kijelolese(); // A megfelelő kérdés számnál megjelöli a helyes válasznál összegét
-        Activity_4_Button_nyeremeny_1.setOnClickListener(new View.OnClickListener() {
+        new Handler().postDelayed(new Runnable()
+        {
             @Override
-            public void onClick(View view)
+            public void run()
             {
                 Kovetkezo_kerdes();
             }
-        });
+        },Kovetkezo_kerdes);
     }
     public void Inicializalas()
     {
@@ -66,6 +66,7 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
     {
         Intent kovetkezo = new Intent(MainActivity_eredmenytabla.this,MainActivity_kerdesek.class);
         startActivity(kovetkezo);
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
         finish();
     }
     public void Nyeremeny_kijelolese()
@@ -77,6 +78,7 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
         {
             case 1:
                 Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                // Looper
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
@@ -426,8 +428,8 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     }
                     ,keslelteto);
                 break;
-            default:
-                Toast.makeText(MainActivity_eredmenytabla.this, "Nem sikerült az első válasz nyereményed: 0 Ft", Toast.LENGTH_SHORT).show();
+            // default:
+                // Toast.makeText(MainActivity_eredmenytabla.this, "Nem sikerült az első válasz nyereményed: 0 Ft", Toast.LENGTH_SHORT).show();
         }
     }
 }

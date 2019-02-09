@@ -1,4 +1,4 @@
-﻿Hányas számú mezt viselte Puskás Öcsi az Aranycsapatban?;10-es;9-es;8-as;11-es;A;BCD
+Hányas számú mezt viselte Puskás Öcsi az Aranycsapatban?;10-es;9-es;8-as;11-es;A;BCD
 Ki volt az első köztársasági elnök Magyarországon a II. világháború után?;Nagy Ferenc;Szakasits Árpád;Dobi István;Tildy Zoltán;D;ABC
 Ki közvetítette a legendás 6:3-as magyar-angol futballmérkőzést?;Vitray Tamás;Komjáthy György;Szepesi György;Ipper Pál;C;ABD
 Melyik olasz futball-klub játékosait becézik "zebráknak"?;Internazionale;Juventus;Torino;AC Milan;B;ACD
@@ -44,7 +44,7 @@ Hol található Magyarország földrajzi középpontja?;Ópusztaszer;Pusztaszabo
 Melyik növény rokonai a cédrusok?;vörösfenyő;kocsányos tölgy;bükk;szelídgesztenye;A;BCD
 Milyen a fád ember?;harsány;unalmas;szétszórt;ábrándozó;B;ACD
 Melyik ország területén található Fokföld?;Argentína;Ausztrália;Dél-afrikai Köztársaság;India;C;ABD
-Mi volt a mai Portugália területén fekvő római tartomány latin neve?;Lusitania;Caledonia;Lutécia;Hebrida;A;BCD
+Mi volt a mai Portugália területén fekvő római tartomány latin neve?;Lusitania;Caledonia;Lutécia;Andalúzia;A;BCD
 Melyik égitest okozza az árapály jelenséget?;Vénusz;Mars;Jupiter;Hold;D;ABC
 Hány egész hangból áll egy egész oktáv?;10;8;12;6;B;ACD
 Melyik ország nem tagja a NATO-nak?;Írország;Izland;Lengyelország;Portugália;A;BCD
@@ -59,7 +59,7 @@ Milyen "deréknak" nevezik a nagyon karcsú női derekat?;szúnyog;bolha;darázs
 Mi Svájc fővárosa?;Zürich;Basel;Bern;Genf;C;ABD
 Hogy nevezik a sörfogyasztást segítő ételeket?;sörszám;sörkorcsolya;sörtrojka;sörcsúszka;B;ACD
 Milyen "hús" egy nyárson sütött étel neve?;pandúrhús;tolvajhús;betyárhús;rablóhús;D;ABC
-Hányszoros Bajnokok Ligája győztes volt a Real Madrid 2016-ban?;10;12;11;13;C;ABD
+Hányszoros Bajnokok Ligája győztes volt a Real Madrid 2016-ban?;10;11;12;13;B;ACD
 Melyik város hídja a Brooklyn híd?;Boston;Los Angeles;Washington;New York;D;ABC
 Mi a cseppkő alapanyaga?;agyag;mészkő;gránit;kvarc;B;ACD
 Melyik harcászati eszköz másik neve a srapnel?;harckocsi;bombázó;repeszgránát;akna;C;ABD
@@ -77,3 +77,39 @@ Legkevesebb hány szervával lehet nyerni a teniszben egy játékot?;három;nég
 Milyen néven vált híressé Ricardo Izecson dos Santos Leite?;Rivaldo;Quaresma;Robinho;Kaká;D;ABC
 Hány piros és fehér sáv van az Amerikai Egyesült Államok zászlaján?;6 piros 6 fehér;6 piros 7 fehér;7 piros 6 fehér;7 piros 7 fehér;C;ABD
 Mit jelent magyarul Buenos Aires neve?;isten hozott;jó napot kívánok;szép kilátás;jó szelek;D;ABC
+Milyen "automatát" épített Kempelen Farkas?;automata fényképezőgépet;automata kártyajátékost;kávéautomatát;sakkautomatát;D;ABC
+Mit használt az első emberpár "ruha" gyanánt a Paradicsomban?;fügefalevelet;császárfalevelet;tűlevelet;lapulevelet;A;BCD
+Milyen orvos volt a Vészhelyzetből ismert Ross doktor?;sebészorvos;altatóorvos;fogorvos;gyermekorvos;D;ABC
+Mikor történt a hirosima-i atomtámadás?;1945.augusztus 9;1945.augusztus 8;1945.augusztus 6;1946.augusztus 6;C;ABD
+A Biblia szerint kit akart Ábrahám feláldozni?;Ézsaut;Jákobot;Illést;Izsákot;D;ABC
+Melyik angol futballklubbot alapított a legkorábban?;Sheffield United FC;Barnsley FC;Sheffield Wednesday FC;Sheffield FC;D;ABC
+Melyik folyó folyik keresztül a Grand Canyonon?;Colorado;Ohio;Mississippi;Rio Grande;A;BCD
+Hány személy szerepel Leonardo da Vinci: Az utolsó vacsora című művén?;11;12;13;14;C;ABD
+Melyik országban terül el a Nagy-Viktória-sivatag?;Ausztrália;Kína;Amerikai Egyesült Államok;Dél-afrikai Köztársaság;A;BCD
+Hány lépést lehet megtenni a kosárlabdában úgy, ha a labdát nem pattintjuk le?;2;3;4;5;A;BCD
+Melyik csapatban fejezte be pályafutását a híres kosaras Michael Jordan?;Utah Jazz;Chicago Bulls;Los Angeles Lakers;New York Knicks;B;ACD
+Ki volt 2013-ban a világ leggazdagabb embere?;Amancio Ortega;Warren Buffett;Bill Gates;Carlos Slim;D;ABC
+Ki volt 2004-ben az Aranylabda díj győztese?;Fabio Cannavaro;Ronaldo;Kaká;Andrij Sevcsenko;D;ABC
+Mikor jelent meg a Windows 8 operációs rendszer?;2011;2012;2013;2014;B;ACD
+Melyik halfajta nevével illetik a sovány embert?;ponty;csuka;hering;keszeg;D;ABC
+Milyen nemzetiségű Sir Anthony Hopkins színész?;angol;skót;wales;ír;C;ABD
+Mi az 5723 római megfelelője?;MMMMMDCCXXIIV;MMMMDDCCCDXXIII;MMMMMDCCXVVIII;MMMMMDCCXXIII;D;ABC
+Melyik kémiai elem vegyjele a "Cr"?;króm;kadmium;kobalt;klór;A;BCD
+Mi az aszkorbinsav közismert neve?;aminosav;sósav;C-vitamin;metán;C;ABD
+Kik vívták a peloponnészoszi háborút?;Róma és Karthágó;Athén és Spárta;Ur és Uruk;Memphisz és Théba;B;ACD
+Melyik labdarúgó csapat nyerte meg a 2001. évi Bajnokok Ligája döntőt?;Valencia;Real Madrid;Bayern München;Liverpool;C;ABD
+Hová torkollik a Szent Lőrinc-folyó?;Atlanti-óceán;Mexikói-öböl;Csendes-óceán;Karib-tenger;A;BCD
+Melyik kémiai elem kristályosodott változata a gyémánt?;szén;vas;arany;foszfor;A;BCD
+Melyik nép tánca a polka?;ukrán;cseh;lengyel;bolgár;B;ACD
+Hány pont van egy dobókockán?;20;22;23;21;D;ABC
+Hol található a Yellowstone Nemzeti Park?;az Andokban;a Sziklás-hegységben;az Atlasz-hegységben;a Pireneusokban;B;ACD
+Honnan indult el végzetes útjára a Titanic?;New York;Liverpool;Brighton;Southampton;D;ABC
+Hol keresztelték meg Jézust?;a Nílusban;a Jordán folyó vizében;a Genezáreti-tóban;a Holt-tengerben;B;ACD
+Kezdésnél hány bábu van elhelyezve a sakktáblán?;24;28;32;36;C;ABD
+Ki lőtte a 2018-as Franciaország - Horvátország világbajnoki döntő utolsó gólját?;Paul Pogba;Ivan Perišić;Mario Mandžukić;Kylian Mbappe;C;ABD
+2-nek hányadik hatványa a 65536?;13;15;16;18;C;ABD
+Melyik olasz város labdarúgó klubcsapata a Lazio?;Milánó;Torino;Nápoly;Róma;D;ABC
+Kik építettek akropoliszokat?;az ókori egyiptomiak;a vikingek;a maják;az ókori görögök;D;ABC
+Mi a szputnyik?;űrrepülőgép;hordozórakéta;műhold;űrteleszkóp;C;ABD
+Hány perc egy hét?;10080 perc;12080 perc;14280 perc;16800 perc;A;BCD
+Melyik hónapban iktatják be hivatalukba az Egyesült Államok elnökeit?;november;december;január;február;C;ABD
