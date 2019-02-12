@@ -8,11 +8,23 @@
     tools:context=".MainActivity_animacio">
 
     <ImageView
-        android:layout_width="350dp"
+        android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:id="@+id/Activity_5_indito_animacio"
         android:background="@drawable/loim_hatter"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Activity_5_leugro_szoveg"
+        android:text="Legyen Ön is Milliomos"
+        android:textSize="50dp"
+        android:textColor="@color/Text_color_white"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="125dp"
+        android:visibility="invisible"
         />
 </RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/linear_interpolator"
+    android:fillAfter="true">
+        <translate
+            android:fromYDelta="0%"
+            android:toYDelta="-45%"
+            android:duration="2000"
+            />
+</set>
+
+<!--
+    android:fillAfter="true"> -> megtartja az X,Y koordinátákat le befejeződik a futás
+    <translate
+            android:fromYDelta="0%" -> ahol el van helyezve az objektum az mindig 0%
+            android:toYDelta="-45%" -> felfele való mozgatáshoz mínusz érték kell _ feleléhez +
+            android:duration="3000" -> hány mp alatt csinálja meg
+            />
+-->
