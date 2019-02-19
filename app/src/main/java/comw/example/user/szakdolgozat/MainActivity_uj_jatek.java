@@ -23,6 +23,7 @@ public class MainActivity_uj_jatek extends AppCompatActivity
     private Button MainActivity_2_Button_avatarok;
     private ImageView MainActivity_2_Imageview_avatar;
     private EditText MainActivity_2_Edittext_felhasznalo_nev;
+    private String Avatar_nev = "Férfi";
 
     private int CAMERA_REQUEST_CODE = 123; // kamerakód
 
@@ -71,6 +72,7 @@ public class MainActivity_uj_jatek extends AppCompatActivity
                     {
                         if (menuItem.getTitle().equals("Férfi"))
                         {
+                            Avatar_nev = "Férfi";
                             MainActivity_2_Imageview_avatar.setBackgroundResource(R.drawable.ferfi);
                             MainActivity_2_Imageview_avatar.setImageBitmap(null); // kinullázza a setImageBitmap-ot így nem lesz benne kép
                         }
@@ -81,6 +83,7 @@ public class MainActivity_uj_jatek extends AppCompatActivity
                         }
                         else
                         {
+                            Avatar_nev = "Nő";
                             MainActivity_2_Imageview_avatar.setBackgroundResource(R.drawable.no);
                             MainActivity_2_Imageview_avatar.setImageBitmap(null); // kinullázza a setImageBitmap-ot így nem lesz benne kép
                         }
@@ -129,12 +132,15 @@ public class MainActivity_uj_jatek extends AppCompatActivity
         int Telefonos_segitseg_szama = 0; // ezeket az adatokat küldi tovább
         int Felezes_segitseg_szama = 0; // ezeket az adatokat küldi tovább
         int Nezoi_segitseg_szama = 0; // ezeket az adatokat küldi tovább
+        String felhasznalo_nev = MainActivity_2_Edittext_felhasznalo_nev.getText().toString();
         SharedPreferences jo_valaszok_mentese = getSharedPreferences(filename, Context.MODE_PRIVATE);
         SharedPreferences.Editor szerkeszto = jo_valaszok_mentese.edit();
         szerkeszto.putInt("Jó válaszok száma",jo_valaszok_szam);
         szerkeszto.putInt("Telefonos segítség",Telefonos_segitseg_szama);
         szerkeszto.putInt("Felezés segítség",Felezes_segitseg_szama);
         szerkeszto.putInt("Nézői segítség",Nezoi_segitseg_szama);
+        szerkeszto.putString("Felhasználó név", felhasznalo_nev); // tovább küldjük az Edittext-ben lévő szöveget
+        szerkeszto.putString("Avatar neve",Avatar_nev);
         szerkeszto.clear(); // Minden új játék kezdésnél ez kitörli az elmentett értékeket és 0-ra állítja így minden alaphelyzetből indul
         szerkeszto.commit();
     }

@@ -28,8 +28,8 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private ImageButton MainActivity_3_felezes;
     private ImageButton MainActivity_3_nezoi_segitseg;
     private ImageButton MainActivity_3_plusz_egy_perc;
-    private TextView Activity_3_textview_kerdes;
-    private TextView Activity_3_textview_visszaszamlalo;
+    private TextView MainActivity_3_textview_kerdes;
+    private TextView MainActivity_3_textview_visszaszamlalo;
     private Button Button_valasz_A;
     private Button Button_valasz_B;
     private Button Button_valasz_C;
@@ -57,6 +57,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private int adat = 0;
     private int Felezes_segitseg_szama = 0;
     private int Nezoi_segitseg_szama = 0;
+    private String Adatbazis_felhasznalo_nev = "";
+    private String Adatbazis_avatar_nev = "";
+
+    private Adatbazis_letrehozo adatbazis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -71,6 +75,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Button_C_esemeny();
         Button_D_esemeny();
         Kerdes_ido_visszaszamlalo();
+        Adat_rogzites(); // adatbázisba való profilkép név - felhasználó név - kérdés szám
         try
         {
             InputStream Kerdes_beolvasas = this.getResources().openRawResource(R.raw.szakdolgozat_kerdesek);
@@ -102,7 +107,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Kivalasztott_kerdes = Kerdesek_lista.get(Kerdes_index);
 
         // Beállítjuk a véletlen generált kérdést a megfelelő helyre
-        Activity_3_textview_kerdes.setText(Kivalasztott_kerdes.getKerdes());
+        MainActivity_3_textview_kerdes.setText(Kivalasztott_kerdes.getKerdes());
         Button_valasz_A.setText(Kivalasztott_kerdes.getValasz_A());
         Button_valasz_B.setText(Kivalasztott_kerdes.getValasz_B());
         Button_valasz_C.setText(Kivalasztott_kerdes.getValasz_C());
@@ -301,12 +306,14 @@ public class MainActivity_kerdesek extends AppCompatActivity
         MainActivity_3_felezes = (ImageButton) findViewById(R.id.Activity_3_imagebutton_felezes);
         MainActivity_3_nezoi_segitseg = (ImageButton) findViewById(R.id.Activity_3_imagebutton_nezoi_segitseg);
         MainActivity_3_plusz_egy_perc = (ImageButton) findViewById(R.id.Activity_3_imagebutton_plusz_perc);
-        Activity_3_textview_kerdes = (TextView) findViewById(R.id.Activity_3_textview_kerdesek);
-        Activity_3_textview_visszaszamlalo = (TextView) findViewById(R.id.Activity_3_textview_visszaszamlalo);
+        MainActivity_3_textview_kerdes = (TextView) findViewById(R.id.Activity_3_textview_kerdesek);
+        MainActivity_3_textview_visszaszamlalo = (TextView) findViewById(R.id.Activity_3_textview_visszaszamlalo);
         Button_valasz_A = (Button) findViewById(R.id.Activity_3_button_valasz_A);
         Button_valasz_B = (Button) findViewById(R.id.Activity_3_button_valasz_B);
         Button_valasz_C = (Button) findViewById(R.id.Activity_3_button_valasz_C);
         Button_valasz_D = (Button) findViewById(R.id.Activity_3_button_valasz_D);
+
+        adatbazis = new Adatbazis_letrehozo(this);
     }
     public void Button_A_esemeny()
     {
@@ -593,18 +600,18 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 if (l / 1000 > 60)
                 {
                     String hatralevo_id = String.format("1:%02d",(l / 1000) - 61); // 60 helyett 61 hogy 1:01 után ne 0:59 legyen hanem 1:00
-                    Activity_3_textview_visszaszamlalo.setText(hatralevo_id);
+                    MainActivity_3_textview_visszaszamlalo.setText(hatralevo_id);
                 }
                 else
                 {
                     String hatralevo_id= String.format("0:%02d",(l / 1000) -1);
-                    Activity_3_textview_visszaszamlalo.setText(hatralevo_id);
+                    MainActivity_3_textview_visszaszamlalo.setText(hatralevo_id);
                 }
             }
             @Override
             public void onFinish()
             {
-                Activity_3_textview_visszaszamlalo.setText("0:00");
+                MainActivity_3_textview_visszaszamlalo.setText("0:00");
                 Alert_lejart_ido = new AlertDialog.Builder(MainActivity_kerdesek.this);
                 Alert_lejart_ido.setTitle("Az idő lejárt!").setMessage("Nem tudtál 1 percen belül válaszolni a kérdésre, így a játéknak vége")
                         .setPositiveButton("Kilépés", new DialogInterface.OnClickListener()
@@ -636,5 +643,30 @@ public class MainActivity_kerdesek extends AppCompatActivity
         startActivity(Uj_jatek);
         finish();
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    public void Adat_rogzites()
+    {
+        SharedPreferences avatar_nev = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        Adatbazis_avatar_nev = avatar_nev.getString("Avatar neve","");
+        String adatbazis_avatar_nev = Adatbazis_avatar_nev;
+
+        SharedPreferences felhasznalo_nev = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        Adatbazis_felhasznalo_nev = felhasznalo_nev.getString("Felhasználó név","");
+        String adatbazis_felhasznalo_nev = Adatbazis_felhasznalo_nev;
+
+        SharedPreferences Jo_valaszok_szama = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        adat = Jo_valaszok_szama.getInt("Jó válaszok száma:",0);
+        int adatbazis_eredmeny = adat;
+
+        boolean eredmeny = adatbazis.Adat_felvetel(adatbazis_avatar_nev,adatbazis_felhasznalo_nev,adatbazis_eredmeny);
+        if (eredmeny)
+        {
+            Toast.makeText(MainActivity_kerdesek.this,"Sikeres adatrögzítés",Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(MainActivity_kerdesek.this,"Sikertelen adatrögzítés",Toast.LENGTH_SHORT).show();
+        }
     }
 }
