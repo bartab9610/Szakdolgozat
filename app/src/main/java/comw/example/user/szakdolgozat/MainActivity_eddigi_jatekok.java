@@ -4,6 +4,8 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +14,7 @@ public class MainActivity_eddigi_jatekok extends AppCompatActivity
     private TextView MainActivity_6_Adatbazis_avatar_cimek;
     private TextView MainActivity_6_Adatbazis_felhasznalo_nevek;
     private TextView MainActivity_6_Adatbazis_eredmenyek;
-    
+
     private Adatbazis_letrehozo adatbazis;
 
     @Override
@@ -54,5 +56,38 @@ public class MainActivity_eddigi_jatekok extends AppCompatActivity
         {
             Toast.makeText(MainActivity_eddigi_jatekok.this,"Nincsen az adatbázisban befejezett játék!",Toast.LENGTH_SHORT).show();
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.adatbazis_torles,menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.Adatbazis_torles:
+                int Adatbazis_eredmeny = adatbazis.Tabla_torles();
+                if (Adatbazis_eredmeny > 0)
+                {
+                    Toast.makeText(MainActivity_eddigi_jatekok.this,"Sikeres törlés!",Toast.LENGTH_SHORT).show();
+                    MainActivity_6_Adatbazis_avatar_cimek.setText("");
+                    MainActivity_6_Adatbazis_felhasznalo_nevek.setText("");
+                    MainActivity_6_Adatbazis_eredmenyek.setText("");
+                    return true;
+                }
+                else if (Adatbazis_eredmeny == 0)
+                {
+                    Toast.makeText(MainActivity_eddigi_jatekok.this,"Üres!",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity_eddigi_jatekok.this,"Sikertelen törlés!",Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

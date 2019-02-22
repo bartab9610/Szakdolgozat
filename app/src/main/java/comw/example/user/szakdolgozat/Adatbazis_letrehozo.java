@@ -56,10 +56,15 @@ public class Adatbazis_letrehozo extends SQLiteOpenHelper
             return true; // Sikeres adatfelvétel
         }
     }
-    public Cursor Adat_lekerdezes() // Itt cask lekérdezzük az adatbázisból a dolgokat de nem fűzzük hozzá egy Textview-hoz
+    public Cursor Adat_lekerdezes() // Itt csak lekérdezzük az adatbázisból a dolgokat de nem fűzzük hozzá egy Textview-hoz
     {
         SQLiteDatabase Adatbazis = this.getWritableDatabase();
-        Cursor eredmeny = Adatbazis.rawQuery("SELECT * FROM " + Tabla_nev,null);
-        return eredmeny;
+        Cursor sqlparancs = Adatbazis.rawQuery("SELECT * FROM " + Tabla_nev,null);
+        return sqlparancs;
+    }
+    public int Tabla_torles()
+    {
+        SQLiteDatabase Adatbazis = this.getWritableDatabase();
+        return Adatbazis.delete(Tabla_nev,"1 = 1",null);
     }
 }
