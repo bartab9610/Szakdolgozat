@@ -80,7 +80,7 @@ public class MainActivity_eddigi_jatekok extends AppCompatActivity
                 }
                 else if (Adatbazis_eredmeny == 0)
                 {
-                    Toast.makeText(MainActivity_eddigi_jatekok.this,"Üres!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity_eddigi_jatekok.this,"Az adatbázis üres!",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {

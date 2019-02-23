@@ -25,7 +25,14 @@ public class MainActivity_uj_jatek extends AppCompatActivity
     private EditText MainActivity_2_Edittext_felhasznalo_nev;
     private String Avatar_nev = "Férfi";
 
+    private int adat = 0;
+    private String Adatbazis_felhasznalo_nev = "";
+    private String Adatbazis_avatar_nev = "";
+
     private int CAMERA_REQUEST_CODE = 123; // kamerakód
+
+    private String filename = "adatok";
+    private Adatbazis_letrehozo adatbazis;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState)
@@ -51,6 +58,7 @@ public class MainActivity_uj_jatek extends AppCompatActivity
                 {
                     Eredmenyek_novelese_Mentes();
                     Jatek_inditas();
+                    Adat_rogzites();
                 }
                 else
                 {
@@ -111,6 +119,8 @@ public class MainActivity_uj_jatek extends AppCompatActivity
         MainActivity_2_Button_avatarok = (Button) findViewById(R.id.Activity_2_button_avatar_valasztas);
         MainActivity_2_Imageview_avatar = (ImageView) findViewById(R.id.Activity_2_imageview_avatar);
         MainActivity_2_Edittext_felhasznalo_nev = (EditText) findViewById(R.id.Activity_2_edittext_becenev);
+
+        adatbazis = new Adatbazis_letrehozo(this);
     }
     public void Elozo_menupont()
     {
@@ -143,5 +153,31 @@ public class MainActivity_uj_jatek extends AppCompatActivity
         szerkeszto.putString("Avatar neve",Avatar_nev);
         szerkeszto.clear(); // Minden új játék kezdésnél ez kitörli az elmentett értékeket és 0-ra állítja így minden alaphelyzetből indul
         szerkeszto.commit();
+    }
+    public void Adat_rogzites()
+    {
+        // SharedPreferences avatar_nev = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        // Adatbazis_avatar_nev = avatar_nev.getString("Avatar neve","");
+        Adatbazis_avatar_nev = Avatar_nev;
+        String adatbazis_avatar_nev = Adatbazis_avatar_nev;
+
+        // SharedPreferences felhasznalo_nev = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        // Adatbazis_felhasznalo_nev = felhasznalo_nev.getString("Felhasználó név","");
+        Adatbazis_felhasznalo_nev = MainActivity_2_Edittext_felhasznalo_nev.getText().toString();
+        String adatbazis_felhasznalo_nev = Adatbazis_felhasznalo_nev;
+
+        SharedPreferences Jo_valaszok_szama = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        adat = Jo_valaszok_szama.getInt("Jó válaszok száma:",0);
+        int adatbazis_eredmeny = adat;
+
+        boolean eredmeny = adatbazis.Adat_felvetel(adatbazis_avatar_nev,adatbazis_felhasznalo_nev,adatbazis_eredmeny);
+        if (eredmeny)
+        {
+            Toast.makeText(MainActivity_uj_jatek.this,"Sikeres adatrögzítés",Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(MainActivity_uj_jatek.this,"Sikertelen adatrögzítés",Toast.LENGTH_SHORT).show();
+        }
     }
 }

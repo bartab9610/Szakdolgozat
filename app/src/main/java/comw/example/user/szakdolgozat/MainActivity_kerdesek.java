@@ -57,8 +57,6 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private int adat = 0;
     private int Felezes_segitseg_szama = 0;
     private int Nezoi_segitseg_szama = 0;
-    private String Adatbazis_felhasznalo_nev = "";
-    private String Adatbazis_avatar_nev = "";
 
     private Adatbazis_letrehozo adatbazis;
 
@@ -75,7 +73,6 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Button_C_esemeny();
         Button_D_esemeny();
         Kerdes_ido_visszaszamlalo();
-        Adat_rogzites(); // adatbázisba való profilkép név - felhasználó név - kérdés szám
         try
         {
             InputStream Kerdes_beolvasas = this.getResources().openRawResource(R.raw.szakdolgozat_kerdesek);
@@ -336,12 +333,14 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
                             SharedPreferences.Editor szerkeszto = mentes.edit();
                             int adat = mentes.getInt("Jó válaszok száma",0);
+                            String felhasznalo_nev = mentes.getString("Felhasználó név", "");
                             @Override
                             public void run()
                             {
                                 adat++;
                                 szerkeszto.putInt("Jó válaszok száma",adat);
                                 szerkeszto.commit();
+                                adatbazis.Adat_modositas(felhasznalo_nev,adat); // paraméterként átadomn a lekérdezett felhasználó nevet és és a jó válaszok számát
                                 Button_valasz_A.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 // Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
@@ -403,12 +402,14 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
                             SharedPreferences.Editor szerkeszto = mentes.edit();
                             int adat = mentes.getInt("Jó válaszok száma",0);
+                            String felhasznalo_nev = mentes.getString("Felhasználó név", "");
                             @Override
                             public void run()
                             {
                                 adat++;
                                 szerkeszto.putInt("Jó válaszok száma",adat);
                                 szerkeszto.commit();
+                                adatbazis.Adat_modositas(felhasznalo_nev,adat); // paraméterként átadomn a lekérdezett felhasználó nevet és és a jó válaszok számát
                                 Button_valasz_B.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 // Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
@@ -470,12 +471,14 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
                             SharedPreferences.Editor szerkeszto = mentes.edit();
                             int adat = mentes.getInt("Jó válaszok száma",0);
+                            String felhasznalo_nev = mentes.getString("Felhasználó név", "");
                             @Override
                             public void run()
                             {
                                 adat++;
                                 szerkeszto.putInt("Jó válaszok száma",adat);
                                 szerkeszto.commit();
+                                adatbazis.Adat_modositas(felhasznalo_nev,adat); // paraméterként átadomn a lekérdezett felhasználó nevet és és a jó válaszok számát
                                 Button_valasz_C.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 // Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
@@ -537,12 +540,14 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             SharedPreferences mentes = getSharedPreferences(filename, Context.MODE_PRIVATE);
                             SharedPreferences.Editor szerkeszto = mentes.edit();
                             int adat = mentes.getInt("Jó válaszok száma",0);
+                            String felhasznalo_nev = mentes.getString("Felhasználó név", "");
                             @Override
                             public void run()
                             {
                                 adat++;
                                 szerkeszto.putInt("Jó válaszok száma",adat);
                                 szerkeszto.commit();
+                                adatbazis.Adat_modositas(felhasznalo_nev,adat);
                                 Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
                                 // Toast.makeText(MainActivity_kerdesek.this, "Helyes válasz!", Toast.LENGTH_SHORT).show();
                                 Eredmenyek_oldal();
@@ -643,30 +648,5 @@ public class MainActivity_kerdesek extends AppCompatActivity
         startActivity(Uj_jatek);
         finish();
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-    }
-
-    public void Adat_rogzites()
-    {
-        SharedPreferences avatar_nev = getSharedPreferences(filename, Context.MODE_PRIVATE);
-        Adatbazis_avatar_nev = avatar_nev.getString("Avatar neve","");
-        String adatbazis_avatar_nev = Adatbazis_avatar_nev;
-
-        SharedPreferences felhasznalo_nev = getSharedPreferences(filename, Context.MODE_PRIVATE);
-        Adatbazis_felhasznalo_nev = felhasznalo_nev.getString("Felhasználó név","");
-        String adatbazis_felhasznalo_nev = Adatbazis_felhasznalo_nev;
-
-        SharedPreferences Jo_valaszok_szama = getSharedPreferences(filename, Context.MODE_PRIVATE);
-        adat = Jo_valaszok_szama.getInt("Jó válaszok száma:",0);
-        int adatbazis_eredmeny = adat;
-
-        boolean eredmeny = adatbazis.Adat_felvetel(adatbazis_avatar_nev,adatbazis_felhasznalo_nev,adatbazis_eredmeny);
-        if (eredmeny)
-        {
-            Toast.makeText(MainActivity_kerdesek.this,"Sikeres adatrögzítés",Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            Toast.makeText(MainActivity_kerdesek.this,"Sikertelen adatrögzítés",Toast.LENGTH_SHORT).show();
-        }
     }
 }
