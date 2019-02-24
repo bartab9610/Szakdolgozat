@@ -1,6 +1,8 @@
 package comw.example.user.szakdolgozat;
 
 import android.database.Cursor;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity_eddigi_jatekok extends AppCompatActivity
 {
+    private SwipeRefreshLayout MainActivity_6_Refreshlayout;
     private TextView MainActivity_6_Adatbazis_avatar_cimek;
     private TextView MainActivity_6_Adatbazis_felhasznalo_nevek;
     private TextView MainActivity_6_Adatbazis_eredmenyek;
@@ -23,12 +26,13 @@ public class MainActivity_eddigi_jatekok extends AppCompatActivity
         setContentView(R.layout.activity_main_eddigi_jatekok);
 
         Inicializalas();
-        Adat_lekerdezes_szoveg_fuzes(); // adatbazis select
+        Adatbazis_frissites(); // Refreshlayout - adatbázis select
     }
     public void Inicializalas()
     {
         adatbazis = new Adatbazis_letrehozo(this);
 
+        MainActivity_6_Refreshlayout = (SwipeRefreshLayout) findViewById(R.id.Activity_6_Refreshlayout);
         MainActivity_6_Adatbazis_avatar_cimek = (TextView) findViewById(R.id.Activity_6_Tablelayout_avatar_nev);
         MainActivity_6_Adatbazis_felhasznalo_nevek = (TextView) findViewById(R.id.Activity_6_Tablelayout_felhasznalo_nev);
         MainActivity_6_Adatbazis_eredmenyek = (TextView) findViewById(R.id.Activity_6_Tablelayout_eredmenyek);
@@ -89,5 +93,25 @@ public class MainActivity_eddigi_jatekok extends AppCompatActivity
                 }
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void Adatbazis_frissites()
+    {
+        MainActivity_6_Refreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
+        {
+            @Override
+            public void onRefresh()
+            {
+                MainActivity_6_Refreshlayout.setRefreshing(true); // true értékkel elérjük hogy frissítsen
+                new Handler().postDelayed(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        Adat_lekerdezes_szoveg_fuzes(); // adatbazis select
+                        MainActivity_6_Refreshlayout.setRefreshing(false);
+                    }
+                },2000); // 2 másodpercig fut
+            }
+        });
     }
 }
