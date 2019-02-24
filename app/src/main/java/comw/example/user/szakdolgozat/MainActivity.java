@@ -2,7 +2,6 @@ package comw.example.user.szakdolgozat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,15 +11,12 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity
 {
-    private MediaPlayer Intro;
     private Button Button_uj_jatek;
     private Button Button_folytatas;
     private Button Button_eredmenyek;
     private Button Button_kilepes;
-    private ImageButton Imagebutton_halkit;
     private ImageButton Imagebutton_angol;
     private AlertDialog.Builder Alert_kilepes;
-    private boolean Intro_jatszas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,8 +26,6 @@ public class MainActivity extends AppCompatActivity
 
         Inicializalas();
         Alert_dialogbox();
-        // Intro.start();
-        Intro_jatszas = true;
         Button_uj_jatek.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -45,7 +39,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-
             }
         });
         Button_eredmenyek.setOnClickListener(new View.OnClickListener()
@@ -72,34 +65,13 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-        Imagebutton_halkit.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                if (Intro_jatszas == true)
-                {
-                    Intro_jatszas = false;
-                    Imagebutton_halkit.setBackgroundResource(R.drawable.hang_off);
-                    Intro.setVolume(0, 0);
-                }
-                else if (Intro_jatszas == false)
-                {
-                    Intro_jatszas = true;
-                    Imagebutton_halkit.setBackgroundResource(R.drawable.hang_on);
-                    Intro.setVolume(0, 1);
-                }
-            }
-        });
     }
     public void Inicializalas()
     {
-        Intro = MediaPlayer.create(MainActivity.this, R.raw.loim_music);
         Button_uj_jatek = (Button) findViewById(R.id.Button_uj_jatek);
         Button_folytatas = (Button) findViewById(R.id.Button_jatek_folytatasa);
         Button_eredmenyek = (Button) findViewById(R.id.Button_eredmenyek);
         Button_kilepes = (Button) findViewById(R.id.Button_kilepes);
-        Imagebutton_halkit = (ImageButton) findViewById(R.id.Imagebutton_halkit);
         Imagebutton_angol = (ImageButton) findViewById(R.id.Imagebutton_angol);
     }
     public void Uj_jatek_ablak()
@@ -138,17 +110,5 @@ public class MainActivity extends AppCompatActivity
                 .setCancelable(false)
                 .setIcon(R.drawable.figyelem)
                 .create();
-    }
-    @Override
-    protected void onStop()
-    {
-        Intro.stop();
-        super.onStop();
-    }
-    @Override
-    protected void onDestroy()
-    {
-        Intro.stop();
-        super.onDestroy();
     }
 }

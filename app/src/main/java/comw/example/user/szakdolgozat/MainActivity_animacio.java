@@ -1,19 +1,26 @@
 package comw.example.user.szakdolgozat;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity_animacio extends AppCompatActivity implements Animation.AnimationListener
 {
+    private MediaPlayer Intro;
+    private boolean Intro_jatszas;
+    private ImageButton Button_hangero;
     private ImageView Imageview_indito_animacio;
     private TextView Textview_szoveg_megjelenes;
     private static int keslelteto = 17000; // 17 másodperc után indul el a MainActivity
@@ -23,10 +30,16 @@ public class MainActivity_animacio extends AppCompatActivity implements Animatio
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        // Ennek kell legelől lennie különben hibára fut!
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR); getSupportActionBar().hide(); // eltünteti az ActionBar-t "Legyen Ön is Milliomos" nem látszódik
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_animacio);
 
         Inicializalas();
+        Intro.start();
+        Intro_jatszas = true;
+        Hangeroszabalyzas();
         Formazott_szoveg();
         Animation valami = AnimationUtils.loadAnimation(MainActivity_animacio.this,R.anim.betoltokep_fade_in);
         Imageview_indito_animacio.setAnimation(valami);
@@ -64,6 +77,8 @@ public class MainActivity_animacio extends AppCompatActivity implements Animatio
     }
     public void Inicializalas()
     {
+        Intro = MediaPlayer.create(MainActivity_animacio.this, R.raw.loim_music);
+        Button_hangero = (ImageButton) findViewById(R.id.Activity_5_Imagebutton_hangero);
         Imageview_indito_animacio = (ImageView) findViewById(R.id.Activity_5_indito_animacio);
         Textview_szoveg_megjelenes = (TextView) findViewById(R.id.Activity_5_leugro_szoveg);
     }
@@ -82,6 +97,28 @@ public class MainActivity_animacio extends AppCompatActivity implements Animatio
         Formazott_szoveg.setSpan(Piros_On,7,9,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // megadjuk a ForegroundColorSpan változót majd megadjuk hogy hányadik karaktertől hányadikik akarjuk beállítani
         Textview_szoveg_megjelenes.setText(Formazott_szoveg); // felülírom a létrehozott szöveget a formázottra
     }
+    public void Hangeroszabalyzas()
+    {
+        Button_hangero.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if (Intro_jatszas == true)
+                {
+                    Intro_jatszas = false;
+                    Button_hangero.setBackgroundResource(R.drawable.volume_off_red);
+                    Intro.setVolume(0, 0);
+                }
+                else if (Intro_jatszas == false)
+                {
+                    Intro_jatszas = true;
+                    Button_hangero.setBackgroundResource(R.drawable.volume_up_blue);
+                    Intro.setVolume(0, 1);
+                }
+            }
+        });
+    }
     @Override
     public void onAnimationStart(Animation animation)
     {
@@ -95,5 +132,17 @@ public class MainActivity_animacio extends AppCompatActivity implements Animatio
     @Override
     public void onAnimationRepeat(Animation animation)
     {
+    }
+    @Override
+    protected void onStop()
+    {
+        Intro.stop();
+        super.onStop();
+    }
+    @Override
+    protected void onDestroy()
+    {
+        Intro.stop();
+        super.onDestroy();
     }
 }

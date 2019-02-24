@@ -71,14 +71,7 @@
             android:layout_height="55dp"
             android:id="@+id/Imagebutton_magyar"
             android:background="@drawable/magyar_zaszlo"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="25dp"
-            />
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="55dp"
-            android:id="@+id/Imagebutton_halkit"
-            android:background="@drawable/hang_on"
+            android:layout_marginLeft="80dp"
             android:layout_marginRight="25dp"
             />
         <ImageButton

@@ -27,4 +27,11 @@
         android:layout_marginBottom="125dp"
         android:visibility="invisible"
         />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Activity_5_Imagebutton_hangero"
+        android:background="@drawable/volume_up_blue"
+        android:layout_alignParentRight="true"
+        />
 </RelativeLayout>
