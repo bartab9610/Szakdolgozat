@@ -142,16 +142,18 @@ public class MainActivity_uj_jatek extends AppCompatActivity
         int Telefonos_segitseg_szama = 0; // ezeket az adatokat küldi tovább
         int Felezes_segitseg_szama = 0; // ezeket az adatokat küldi tovább
         int Nezoi_segitseg_szama = 0; // ezeket az adatokat küldi tovább
+        int Uj_kerdes_szama = 0; // ezeket az adatokat küldi tovább
         String felhasznalo_nev = MainActivity_2_Edittext_felhasznalo_nev.getText().toString();
         String Jo_valasz_volte = "Jó válasz"; // SharedPref-be tovább küldön egy string változót "Jó válasz értékkel" ez addig lesz ez az érték amíg rossz választ nem ad meg a játékos
         SharedPreferences jo_valaszok_mentese = getSharedPreferences(filename, Context.MODE_PRIVATE);
         SharedPreferences.Editor szerkeszto = jo_valaszok_mentese.edit();
-        szerkeszto.putInt("Jó válaszok száma",jo_valaszok_szam);
-        szerkeszto.putInt("Telefonos segítség",Telefonos_segitseg_szama);
-        szerkeszto.putInt("Felezés segítség",Felezes_segitseg_szama);
-        szerkeszto.putInt("Nézői segítség",Nezoi_segitseg_szama);
+        szerkeszto.putInt("Jó válaszok száma", jo_valaszok_szam);
+        szerkeszto.putInt("Telefonos segítség", Telefonos_segitseg_szama);
+        szerkeszto.putInt("Felezés segítség", Felezes_segitseg_szama);
+        szerkeszto.putInt("Nézői segítség", Nezoi_segitseg_szama);
+        szerkeszto.putInt("Új kérdés segítség", Uj_kerdes_szama);
         szerkeszto.putString("Felhasználó név", felhasznalo_nev); // tovább küldjük az Edittext-ben lévő szöveget
-        szerkeszto.putString("Avatar neve",Avatar_nev);
+        szerkeszto.putString("Avatar neve", Avatar_nev);
         szerkeszto.putString("Jó válasz volt-e", Jo_valasz_volte); // alapértelmezettként "Jó válasz"-t küldünk bele a SharedPref-be
         szerkeszto.clear(); // Minden új játék kezdésnél ez kitörli az elmentett értékeket és 0-ra állítja így minden alaphelyzetből indul
         szerkeszto.commit();

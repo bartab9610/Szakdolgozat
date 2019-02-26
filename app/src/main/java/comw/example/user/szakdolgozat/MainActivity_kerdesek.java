@@ -27,7 +27,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private ImageButton MainActivity_3_telefonos_segitseg;
     private ImageButton MainActivity_3_felezes;
     private ImageButton MainActivity_3_nezoi_segitseg;
-    private ImageButton MainActivity_3_plusz_egy_perc;
+    private ImageButton MainActivity_3_uj_kerdes;
     private TextView MainActivity_3_textview_kerdes;
     private TextView MainActivity_3_textview_visszaszamlalo;
     private Button Button_valasz_A;
@@ -57,6 +57,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private int adat = 0;
     private int Felezes_segitseg_szama = 0;
     private int Nezoi_segitseg_szama = 0;
+    private int Uj_kerdes_segitseg_szama = 0;
 
     private Adatbazis_letrehozo adatbazis;
 
@@ -102,6 +103,8 @@ public class MainActivity_kerdesek extends AppCompatActivity
         Random Veletlen_kerdes_kivalasztas = new Random();
         int Kerdes_index = Veletlen_kerdes_kivalasztas.nextInt(Kerdesek_lista.size());
         Kivalasztott_kerdes = Kerdesek_lista.get(Kerdes_index);
+        int Kitorlendo_kerdes = Kerdes_index; // A Kerdes_index-et átadjuk egy int típusú változónak
+        Kerdesek_lista.remove(Kitorlendo_kerdes); // 1. kérdésnél is már kiszedjük a listábol a Kerdes_index-et, hogy ki kérdés cserére nyomunk akkor az első kérdés ne jelenlen meg újra utána!
 
         // Beállítjuk a véletlen generált kérdést a megfelelő helyre
         MainActivity_3_textview_kerdes.setText(Kivalasztott_kerdes.getKerdes());
@@ -296,13 +299,50 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 // IDE JÖN A DINAMIKUS LINEARLAYOUT ÉS ABBA BELE A GRAFIKON!!!!
             }
         });
+        // Új kérdés segítség adat lekérdezése és letiltása
+        SharedPreferences Uj_kerdes_segitseg = getSharedPreferences(filename, Context.MODE_PRIVATE);
+        Uj_kerdes_segitseg_szama = Uj_kerdes_segitseg.getInt("Új kérdés segítség",0);
+        if (Uj_kerdes_segitseg_szama == 1)
+        {
+            MainActivity_3_uj_kerdes.setBackgroundResource(R.drawable.ujkerdes_tiltott);
+            MainActivity_3_uj_kerdes.setEnabled(false);
+        }
+        MainActivity_3_uj_kerdes.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                MainActivity_3_uj_kerdes.setBackgroundResource(R.drawable.ujkerdes_tiltott);
+                MainActivity_3_uj_kerdes.setEnabled(false);
+                Uj_kerdes_segitseg_szama++;
+                SharedPreferences Uj_kerdes_segitseg = getSharedPreferences(filename, Context.MODE_PRIVATE);
+                SharedPreferences.Editor szerkeszto = Uj_kerdes_segitseg.edit();
+                szerkeszto.putInt("Új kérdés segítség", Uj_kerdes_segitseg_szama);
+                szerkeszto.commit(); // felülírja az értéket
+
+                Random Veletlen_kerdes_kivalasztas = new Random();
+                int Kerdes_index = Veletlen_kerdes_kivalasztas.nextInt(Kerdesek_lista.size());
+                Kivalasztott_kerdes = Kerdesek_lista.get(Kerdes_index);
+                int Kitorlendo_kerdes = Kerdes_index; // gomb
+                Kerdesek_lista.remove(Kitorlendo_kerdes);
+
+                // Beállítjuk a véletlen generált kérdést a megfelelő helyre
+                MainActivity_3_textview_kerdes.setText(Kivalasztott_kerdes.getKerdes());
+                Button_valasz_A.setText(Kivalasztott_kerdes.getValasz_A());
+                Button_valasz_B.setText(Kivalasztott_kerdes.getValasz_B());
+                Button_valasz_C.setText(Kivalasztott_kerdes.getValasz_C());
+                Button_valasz_D.setText(Kivalasztott_kerdes.getValasz_D());
+                Helyes_valasz_karakter = Kivalasztott_kerdes.getHelyes_valasz();
+                Rossz_valasz_karakterek = Kivalasztott_kerdes.getRossz_valasz_karakterek();
+            }
+        });
     }
     public void Inicializalas()
     {
         MainActivity_3_telefonos_segitseg = (ImageButton) findViewById(R.id.Activity_3_imagebutton_telefonon_segitseg);
         MainActivity_3_felezes = (ImageButton) findViewById(R.id.Activity_3_imagebutton_felezes);
         MainActivity_3_nezoi_segitseg = (ImageButton) findViewById(R.id.Activity_3_imagebutton_nezoi_segitseg);
-        MainActivity_3_plusz_egy_perc = (ImageButton) findViewById(R.id.Activity_3_imagebutton_plusz_perc);
+        MainActivity_3_uj_kerdes = (ImageButton) findViewById(R.id.Activity_3_imagebutton_uj_kerdes);
         MainActivity_3_textview_kerdes = (TextView) findViewById(R.id.Activity_3_textview_kerdesek);
         MainActivity_3_textview_visszaszamlalo = (TextView) findViewById(R.id.Activity_3_textview_visszaszamlalo);
         Button_valasz_A = (Button) findViewById(R.id.Activity_3_button_valasz_A);

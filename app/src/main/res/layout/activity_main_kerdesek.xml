@@ -86,7 +86,7 @@
        android:layout_toLeftOf="@id/Activity_3_imageview_ikon"
        android:orientation="vertical">
        <ImageButton
-           android:layout_width="wrap_content"
+           android:layout_width="match_parent"
            android:layout_height="65dp"
            android:id="@+id/Activity_3_imagebutton_telefonon_segitseg"
            android:background="@drawable/telefonos_segitseg_szinezett"
@@ -94,7 +94,7 @@
            android:layout_marginBottom="35dp"
            />
        <ImageButton
-           android:layout_width="65dp"
+           android:layout_width="match_parent"
            android:layout_height="65dp"
            android:id="@+id/Activity_3_imagebutton_felezes"
            android:background="@drawable/felezes_2_szinezett"
@@ -106,7 +106,7 @@
         android:layout_toRightOf="@id/Activity_3_imageview_ikon"
         android:orientation="vertical">
         <ImageButton
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="65dp"
             android:id="@+id/Activity_3_imagebutton_nezoi_segitseg"
             android:background="@drawable/nezoi_segitseg_szerkeztett_meretezett"
@@ -114,10 +114,10 @@
             android:layout_marginBottom="35dp"
             />
        <ImageButton
-           android:layout_width="wrap_content"
-           android:layout_height="65dp"
-           android:id="@+id/Activity_3_imagebutton_plusz_perc"
-           android:background="@drawable/plusz_egy_perc"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/Activity_3_imagebutton_uj_kerdes"
+           android:background="@drawable/ujkerdes"
            />
    </LinearLayout>
 </RelativeLayout>
