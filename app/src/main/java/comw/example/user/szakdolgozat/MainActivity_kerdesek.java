@@ -357,9 +357,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
+                            SharedPreferences Jo_valasz_voltE = getSharedPreferences(filename,Context.MODE_PRIVATE); // SharefPref-ből lekérdezem a "Jó válasz volt-e" értéket
+                            SharedPreferences.Editor szerkeszto = Jo_valasz_voltE.edit(); // létrehozok egy editort hogy tudjam szerkezteni gombnyomásra
+                            String Eredmeny = Jo_valasz_voltE.getString("Jó válasz volt-e",""); // a "Jó válasz volt-e" értékét belerakom egy String változóba
                             @Override
                             public void run()
                             {
+                                Eredmeny = "Hibás válasz"; // rossz válasz esetén az elmentett változó értéket átírja "Hibás válasz"-ra
+                                szerkeszto.putString("Jó válasz volt-e", Eredmeny); // putstring-vel és commit-val pedig frissítjük az értéket (MainActivity_eredmenytable osztályban minden kérdésnél lekérdezi hogy "Jó válasz" vagy "Hibás válasz"-e a String értéke
+                                szerkeszto.commit();
                                 Button_valasz_A.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
                                 switch (Helyes_valasz_karakter)
                                 {
@@ -426,9 +432,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
+                            SharedPreferences Jo_valasz_voltE = getSharedPreferences(filename,Context.MODE_PRIVATE); // SharefPref-ből lekérdezem a "Jó válasz volt-e" értéket
+                            SharedPreferences.Editor szerkeszto = Jo_valasz_voltE.edit(); // létrehozok egy editort hogy tudjam szerkezteni gombnyomásra
+                            String Eredmeny = Jo_valasz_voltE.getString("Jó válasz volt-e",""); // a "Jó válasz volt-e" értékét belerakom egy String változóba
                             @Override
                             public void run()
                             {
+                                Eredmeny = "Hibás válasz"; // rossz válasz esetén az elmentett változó értéket átírja "Hibás válasz"-ra
+                                szerkeszto.putString("Jó válasz volt-e", Eredmeny); // putstring-vel és commit-val pedig frissítjük az értéket (MainActivity_eredmenytable osztályban minden kérdésnél lekérdezi hogy "Jó válasz" vagy "Hibás válasz"-e a String értéke
+                                szerkeszto.commit();
                                 Button_valasz_B.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
                                 switch (Helyes_valasz_karakter)
                                 {
@@ -495,9 +507,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_C.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
+                            SharedPreferences Jo_valasz_voltE = getSharedPreferences(filename,Context.MODE_PRIVATE); // SharefPref-ből lekérdezem a "Jó válasz volt-e" értéket
+                            SharedPreferences.Editor szerkeszto = Jo_valasz_voltE.edit(); // létrehozok egy editort hogy tudjam szerkezteni gombnyomásra
+                            String Eredmeny = Jo_valasz_voltE.getString("Jó válasz volt-e",""); // a "Jó válasz volt-e" értékét belerakom egy String változóba
                             @Override
                             public void run()
                             {
+                                Eredmeny = "Hibás válasz"; // rossz válasz esetén az elmentett változó értéket átírja "Hibás válasz"-ra
+                                szerkeszto.putString("Jó válasz volt-e", Eredmeny); // putstring-vel és commit-val pedig frissítjük az értéket (MainActivity_eredmenytable osztályban minden kérdésnél lekérdezi hogy "Jó válasz" vagy "Hibás válasz"-e a String értéke
+                                szerkeszto.commit();
                                 Button_valasz_C.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
                                 switch (Helyes_valasz_karakter)
                                 {
@@ -564,9 +582,15 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_D.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
+                            SharedPreferences Jo_valasz_voltE = getSharedPreferences(filename,Context.MODE_PRIVATE); // SharefPref-ből lekérdezem a "Jó válasz volt-e" értéket
+                            SharedPreferences.Editor szerkeszto = Jo_valasz_voltE.edit(); // létrehozok egy editort hogy tudjam szerkezteni gombnyomásra
+                            String Eredmeny = Jo_valasz_voltE.getString("Jó válasz volt-e",""); // a "Jó válasz volt-e" értékét belerakom egy String változóba
                              @Override
                             public void run()
                             {
+                                Eredmeny = "Hibás válasz"; // rossz válasz esetén az elmentett változó értéket átírja "Hibás válasz"-ra
+                                szerkeszto.putString("Jó válasz volt-e", Eredmeny); // putstring-vel és commit-val pedig frissítjük az értéket (MainActivity_eredmenytable osztályban minden kérdésnél lekérdezi hogy "Jó válasz" vagy "Hibás válasz"-e a String értéke
+                                szerkeszto.commit();
                                 Button_valasz_D.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
                                 switch (Helyes_valasz_karakter)
                                 {
