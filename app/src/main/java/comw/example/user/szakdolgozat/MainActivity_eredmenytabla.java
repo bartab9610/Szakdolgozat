@@ -1,30 +1,37 @@
 package comw.example.user.szakdolgozat;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
+import android.os.Vibrator;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity_eredmenytabla extends AppCompatActivity
 {
-    private Button Activity_4_Button_nyeremeny_1;
-    private Button Activity_4_Button_nyeremeny_2;
-    private Button Activity_4_Button_nyeremeny_3;
-    private Button Activity_4_Button_nyeremeny_4;
-    private Button Activity_4_Button_nyeremeny_5;
-    private Button Activity_4_Button_nyeremeny_6;
-    private Button Activity_4_Button_nyeremeny_7;
-    private Button Activity_4_Button_nyeremeny_8;
-    private Button Activity_4_Button_nyeremeny_9;
-    private Button Activity_4_Button_nyeremeny_10;
-    private Button Activity_4_Button_nyeremeny_11;
-    private Button Activity_4_Button_nyeremeny_12;
-    private Button Activity_4_Button_nyeremeny_13;
+    private TextView Activity_4_Textview_nyeremeny_1;
+    private TextView Activity_4_Textview_nyeremeny_2;
+    private TextView Activity_4_Textview_nyeremeny_3;
+    private TextView Activity_4_Textview_nyeremeny_4;
+    private TextView Activity_4_Textview_nyeremeny_5;
+    private TextView Activity_4_Textview_nyeremeny_6;
+    private TextView Activity_4_Textview_nyeremeny_7;
+    private TextView Activity_4_Textview_nyeremeny_8;
+    private TextView Activity_4_Textview_nyeremeny_9;
+    private TextView Activity_4_Textview_nyeremeny_10;
+    private TextView Activity_4_Textview_nyeremeny_11;
+    private TextView Activity_4_Textview_nyeremeny_12;
+    private TextView Activity_4_Textview_nyeremeny_13;
+
+    private Vibrator Activity_4_Vibrator_rezges;
 
     private AlertDialog.Builder Alert_nyeremeny;
     private AlertDialog.Builder Alert_fonyeremeny;
@@ -47,19 +54,20 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
     }
     public void Inicializalas()
     {
-        Activity_4_Button_nyeremeny_1 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_1);
-        Activity_4_Button_nyeremeny_2 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_2);
-        Activity_4_Button_nyeremeny_3 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_3);
-        Activity_4_Button_nyeremeny_4 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_4);
-        Activity_4_Button_nyeremeny_5 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_5);
-        Activity_4_Button_nyeremeny_6 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_6);
-        Activity_4_Button_nyeremeny_7 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_7);
-        Activity_4_Button_nyeremeny_8 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_8);
-        Activity_4_Button_nyeremeny_9 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_9);
-        Activity_4_Button_nyeremeny_10 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_10);
-        Activity_4_Button_nyeremeny_11 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_11);
-        Activity_4_Button_nyeremeny_12 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_12);
-        Activity_4_Button_nyeremeny_13 = (Button) findViewById(R.id.Activity_4_button_nyeremeny_13);
+        Activity_4_Textview_nyeremeny_1 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_1);
+        Activity_4_Textview_nyeremeny_2 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_2);
+        Activity_4_Textview_nyeremeny_3 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_3);
+        Activity_4_Textview_nyeremeny_4 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_4);
+        Activity_4_Textview_nyeremeny_5 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_5);
+        Activity_4_Textview_nyeremeny_6 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_6);
+        Activity_4_Textview_nyeremeny_7 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_7);
+        Activity_4_Textview_nyeremeny_8 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_8);
+        Activity_4_Textview_nyeremeny_9 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_9);
+        Activity_4_Textview_nyeremeny_10 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_10);
+        Activity_4_Textview_nyeremeny_11 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_11);
+        Activity_4_Textview_nyeremeny_12 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_12);
+        Activity_4_Textview_nyeremeny_13 = (TextView) findViewById(R.id.Activity_4_button_nyeremeny_13);
+        Activity_4_Vibrator_rezges = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
     public void Kovetkezo_kerdes()
     {
@@ -76,20 +84,20 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
         switch (adat)
         {
             case 1:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 // Looper
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                             {
-                                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.button_kerdesek_style);
+                                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.button_kerdesek_style);
                                 new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -98,20 +106,20 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 2:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -120,21 +128,21 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 3:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -143,22 +151,22 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 4:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -167,23 +175,23 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 5:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -192,24 +200,24 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 6:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_6.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_6.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -218,25 +226,25 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 7:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_7.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_7.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -245,26 +253,26 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 8:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_8.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_8.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -273,27 +281,27 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 9:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_9.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_9.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                         }
                                 }
                                 ,keslelteto);
@@ -302,28 +310,28 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 10:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_10.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_10.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_10.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_10.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_10.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_10.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -332,29 +340,29 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 11:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_10.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_11.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_10.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_11.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_11.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_11.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_11.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_11.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -363,30 +371,30 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 12:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_10.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_11.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_12.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_10.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_11.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_12.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_12.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_12.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_12.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_12.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -395,31 +403,31 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     ,keslelteto);
                 break;
             case 13:
-                Activity_4_Button_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_10.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_11.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_12.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
-                Activity_4_Button_nyeremeny_13.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_1.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_2.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_3.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_4.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_5.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_6.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_7.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_8.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_9.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_10.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_11.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_12.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                Activity_4_Textview_nyeremeny_13.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            Activity_4_Button_nyeremeny_13.setBackgroundResource(R.drawable.button_kerdesek_style);
+                            Activity_4_Textview_nyeremeny_13.setBackgroundResource(R.drawable.button_kerdesek_style);
                             new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
                                     public void run()
                                     {
-                                        Activity_4_Button_nyeremeny_13.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
+                                        Activity_4_Textview_nyeremeny_13.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                                     }
                                 }
                                 ,keslelteto);
@@ -447,6 +455,22 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                     }
                     else
                     {
+                        // Értesítés
+                        Bitmap ertesites_ikon = BitmapFactory.decodeResource(getResources(),R.drawable.trophy);
+                        NotificationCompat.BigTextStyle nagyszoveg = new NotificationCompat.BigTextStyle();
+                            nagyszoveg.bigText("Helyesen válaszoltál az utolsó kérdésre, nyereményed 50.000.000 forint!");
+                            nagyszoveg.setBigContentTitle("Gratulálunk!");
+                            nagyszoveg.setSummaryText("Legyen Ön is Milliomos 2019");
+                        NotificationCompat.Builder fonyeremeny_ertesites = new NotificationCompat.Builder(MainActivity_eredmenytabla.this)
+                                .setTicker("Legyen Ön is Milliomos")
+                                .setSmallIcon(R.drawable.loim_ikon)
+                                .setLargeIcon(ertesites_ikon)
+                                .setStyle(nagyszoveg);
+                        NotificationManager Ertesites = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                        Ertesites.notify(0,fonyeremeny_ertesites.build());
+                        Activity_4_Vibrator_rezges.vibrate(1000);
+
+                        // AlertDialog
                         Alert_fonyeremeny = new AlertDialog.Builder(MainActivity_eredmenytabla.this);
                         Alert_fonyeremeny.setTitle("Gratulálunk!").setMessage("Helyesen válaszoltál az utolsó kérdésre, nyereményed 50.000.000 forint!\n")
                                 .setNegativeButton("Új játék kezdése", new DialogInterface.OnClickListener()
