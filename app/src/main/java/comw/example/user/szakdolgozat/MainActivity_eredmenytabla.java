@@ -552,8 +552,24 @@ public class MainActivity_eredmenytabla extends AppCompatActivity
                 @Override
                 public void run()
                 {
+                    // Értesítés
+                    Bitmap rossz_valaszos_ertesites_ikon = BitmapFactory.decodeResource(getResources(),R.drawable.trophy);
+                    NotificationCompat.BigTextStyle rossz_valaszos_nagyszoveg = new NotificationCompat.BigTextStyle();
+                    rossz_valaszos_nagyszoveg.bigText("Erre a kérdésre rosszul válaszoltál, de nyereményed " + Nyeremeny + " forint!!");
+                    rossz_valaszos_nagyszoveg.setBigContentTitle("Hibás válasz!");
+                    rossz_valaszos_nagyszoveg.setSummaryText("Legyen Ön is Milliomos 2019");
+                    NotificationCompat.Builder rossz_valaszos_ertesites = new NotificationCompat.Builder(MainActivity_eredmenytabla.this)
+                            .setTicker("Legyen Ön is Milliomos")
+                            .setSmallIcon(R.drawable.loim_ikon)
+                            .setLargeIcon(rossz_valaszos_ertesites_ikon)
+                            .setStyle(rossz_valaszos_nagyszoveg);
+                    NotificationManager Ertesites = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    Ertesites.notify(0,rossz_valaszos_ertesites.build());
+                    Activity_4_Vibrator_rezges.vibrate(1000);
+
+                    // AlertDialog
                     Alert_nyeremeny = new AlertDialog.Builder(MainActivity_eredmenytabla.this);
-                    Alert_nyeremeny.setTitle("Gratulálunk!").setMessage("Erre a kérdésre rosszul válaszoltál, de nyereményed " + Nyeremeny + " forint!\nKövetkező lépésben válassz a lehetőségek közül:")
+                    Alert_nyeremeny.setTitle("Hibás válasz!").setMessage("Erre a kérdésre rosszul válaszoltál, de nyereményed " + Nyeremeny + " forint!\nKövetkező lépésben válassz a lehetőségek közül:")
                             .setNegativeButton("Új játék kezdése", new DialogInterface.OnClickListener()
                             {
                                 @Override
