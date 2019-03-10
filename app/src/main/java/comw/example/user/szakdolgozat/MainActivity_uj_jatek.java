@@ -145,6 +145,8 @@ public class MainActivity_uj_jatek extends AppCompatActivity
         int Uj_kerdes_szama = 0; // ezeket az adatokat küldi tovább
         String felhasznalo_nev = MainActivity_2_Edittext_felhasznalo_nev.getText().toString();
         String Jo_valasz_volte = "Jó válasz"; // SharedPref-be tovább küldön egy string változót "Jó válasz értékkel" ez addig lesz ez az érték amíg rossz választ nem ad meg a játékos
+        int Mentett_valaszok_szama = 0;
+        String Mentett_felhasznalo_nev = "";
         SharedPreferences jo_valaszok_mentese = getSharedPreferences(filename, Context.MODE_PRIVATE);
         SharedPreferences.Editor szerkeszto = jo_valaszok_mentese.edit();
         szerkeszto.putInt("Jó válaszok száma", jo_valaszok_szam);
@@ -155,18 +157,16 @@ public class MainActivity_uj_jatek extends AppCompatActivity
         szerkeszto.putString("Felhasználó név", felhasznalo_nev); // tovább küldjük az Edittext-ben lévő szöveget
         szerkeszto.putString("Avatar neve", Avatar_nev);
         szerkeszto.putString("Jó válasz volt-e", Jo_valasz_volte); // alapértelmezettként "Jó válasz"-t küldünk bele a SharedPref-be
+        szerkeszto.putString("Mentett felhasználó név", Mentett_felhasznalo_nev);
+        szerkeszto.putInt("Mentett válaszok száma", Mentett_valaszok_szama);
         szerkeszto.clear(); // Minden új játék kezdésnél ez kitörli az elmentett értékeket és 0-ra állítja így minden alaphelyzetből indul
-        szerkeszto.commit();
+        szerkeszto.apply();
     }
     public void Adat_rogzites()
     {
-        // SharedPreferences avatar_nev = getSharedPreferences(filename, Context.MODE_PRIVATE);
-        // Adatbazis_avatar_nev = avatar_nev.getString("Avatar neve","");
         Adatbazis_avatar_nev = Avatar_nev;
         String adatbazis_avatar_nev = Adatbazis_avatar_nev;
 
-        // SharedPreferences felhasznalo_nev = getSharedPreferences(filename, Context.MODE_PRIVATE);
-        // Adatbazis_felhasznalo_nev = felhasznalo_nev.getString("Felhasználó név","");
         Adatbazis_felhasznalo_nev = MainActivity_2_Edittext_felhasznalo_nev.getText().toString();
         String adatbazis_felhasznalo_nev = Adatbazis_felhasznalo_nev;
 

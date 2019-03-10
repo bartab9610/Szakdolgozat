@@ -9,6 +9,8 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -222,57 +224,51 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 MainActivity_3_felezes.setEnabled(false);
                 Random Veletlen_rossz_karakter_kivalasztas = new Random();
                 String Rossz_2_valasz_karakter = Kivalasztott_kerdes.getRossz_valasz_karakterek(); // GET-ter segítségével átadom a változónak a kérdés rossz válasz karaktereket
-                String Megszerzett_rossz_karakterek = "";
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 1; i++)
                 {
-                    char Rossz_karakterek = Rossz_2_valasz_karakter.charAt(Veletlen_rossz_karakter_kivalasztas.nextInt(3)); // 3 -> mind a 3 karakteren végig megy és ezek közül választ
-                    Megszerzett_rossz_karakterek += Rossz_karakterek;
+                    char Rossz_karakterek = Rossz_2_valasz_karakter.charAt(Veletlen_rossz_karakter_kivalasztas.nextInt(3)); // 3 -> mind a 3 karakteren végig megy és ezek közül választc.
+                    Rossz_2_valasz_karakter = Kivalasztott_kerdes.getRossz_valasz_karakterek().replaceAll("" + Rossz_karakterek,"");
                 }
-                // Toast.makeText(MainActivity_kerdesek.this," " + Megszerzett_rossz_karakterek,Toast.LENGTH_SHORT).show();
-                switch (Megszerzett_rossz_karakterek) // KÉT UGYANOLYAN KARAKTER MÉG BENNE VAN!!!!!!!!!!!!!!!!!!!!!!!!!!
+                // Toast.makeText(MainActivity_kerdesek.this," " + Rossz_2_valasz_karakter,Toast.LENGTH_SHORT).show();
+                switch (Rossz_2_valasz_karakter)
                 {
-                    case "AB": // Ha "AB" igaz akkor lefut de ha "BA" is igaz akkor is lefut
-                        case "BA":
-                            Button_valasz_A.setText("");
-                            Button_valasz_B.setText("");
-                            Button_valasz_A.setEnabled(false);
-                            Button_valasz_B.setEnabled(false);
-                            break;
+
+                    case "AB":
+                        Button_valasz_A.setText("");
+                        Button_valasz_B.setText("");
+                        Button_valasz_A.setEnabled(false);
+                        Button_valasz_B.setEnabled(false);
+                        break;
                     case "AC":
-                        case "CA":
-                            Button_valasz_A.setText("");
-                            Button_valasz_C.setText("");
-                            Button_valasz_A.setEnabled(false);
-                            Button_valasz_C.setEnabled(false);
-                            break;
+                        Button_valasz_A.setText("");
+                        Button_valasz_C.setText("");
+                        Button_valasz_A.setEnabled(false);
+                        Button_valasz_C.setEnabled(false);
+                        break;
                     case "AD":
-                        case "DA":
-                            Button_valasz_A.setText("");
-                            Button_valasz_D.setText("");
-                            Button_valasz_A.setEnabled(false);
-                            Button_valasz_D.setEnabled(false);
-                            break;
+                        Button_valasz_A.setText("");
+                        Button_valasz_D.setText("");
+                        Button_valasz_A.setEnabled(false);
+                        Button_valasz_D.setEnabled(false);
+                        break;
                     case "BC":
-                        case "CB":
-                            Button_valasz_B.setText("");
-                            Button_valasz_C.setText("");
-                            Button_valasz_B.setEnabled(false);
-                            Button_valasz_C.setEnabled(false);
-                            break;
+                        Button_valasz_B.setText("");
+                        Button_valasz_C.setText("");
+                        Button_valasz_B.setEnabled(false);
+                        Button_valasz_C.setEnabled(false);
+                        break;
                     case "BD":
-                        case "DB":
-                            Button_valasz_B.setText("");
-                            Button_valasz_D.setText("");
-                            Button_valasz_B.setEnabled(false);
-                            Button_valasz_D.setEnabled(false);
-                            break;
+                        Button_valasz_B.setText("");
+                        Button_valasz_D.setText("");
+                        Button_valasz_B.setEnabled(false);
+                        Button_valasz_D.setEnabled(false);
+                        break;
                     case "CD":
-                        case "DC":
-                            Button_valasz_C.setText("");
-                            Button_valasz_D.setText("");
-                            Button_valasz_C.setEnabled(false);
-                            Button_valasz_D.setEnabled(false);
-                            break;
+                        Button_valasz_C.setText("");
+                        Button_valasz_D.setText("");
+                        Button_valasz_C.setEnabled(false);
+                        Button_valasz_D.setEnabled(false);
+                        break;
                 }
             }
         });
@@ -323,8 +319,6 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Random Veletlen_kerdes_kivalasztas = new Random();
                 int Kerdes_index = Veletlen_kerdes_kivalasztas.nextInt(Kerdesek_lista.size());
                 Kivalasztott_kerdes = Kerdesek_lista.get(Kerdes_index);
-                int Kitorlendo_kerdes = Kerdes_index; // gomb
-                Kerdesek_lista.remove(Kitorlendo_kerdes);
 
                 // Beállítjuk a véletlen generált kérdést a megfelelő helyre
                 MainActivity_3_textview_kerdes.setText(Kivalasztott_kerdes.getKerdes());
@@ -379,6 +373,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 adat++;
                                 szerkeszto.putInt("Jó válaszok száma",adat);
+                                szerkeszto.putInt("Mentett válaszok száma",adat);
                                 szerkeszto.commit();
                                 adatbazis.Adat_modositas(felhasznalo_nev,adat); // paraméterként átadomn a lekérdezett felhasználó nevet és és a jó válaszok számát
                                 Button_valasz_A.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
@@ -405,6 +400,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 Eredmeny = "Hibás válasz"; // rossz válasz esetén az elmentett változó értéket átírja "Hibás válasz"-ra
                                 szerkeszto.putString("Jó válasz volt-e", Eredmeny); // putstring-vel és commit-val pedig frissítjük az értéket (MainActivity_eredmenytable osztályban minden kérdésnél lekérdezi hogy "Jó válasz" vagy "Hibás válasz"-e a String értéke
+                                szerkeszto.remove("Mentett válaszok száma");
                                 szerkeszto.commit();
                                 Button_valasz_A.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
                                 switch (Helyes_valasz_karakter)
@@ -454,6 +450,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 adat++;
                                 szerkeszto.putInt("Jó válaszok száma",adat);
+                                szerkeszto.putInt("Mentett válaszok száma",adat);
                                 szerkeszto.commit();
                                 adatbazis.Adat_modositas(felhasznalo_nev,adat); // paraméterként átadomn a lekérdezett felhasználó nevet és és a jó válaszok számát
                                 Button_valasz_B.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
@@ -480,6 +477,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 Eredmeny = "Hibás válasz"; // rossz válasz esetén az elmentett változó értéket átírja "Hibás válasz"-ra
                                 szerkeszto.putString("Jó válasz volt-e", Eredmeny); // putstring-vel és commit-val pedig frissítjük az értéket (MainActivity_eredmenytable osztályban minden kérdésnél lekérdezi hogy "Jó válasz" vagy "Hibás válasz"-e a String értéke
+                                szerkeszto.remove("Mentett válaszok száma");
                                 szerkeszto.commit();
                                 Button_valasz_B.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
                                 switch (Helyes_valasz_karakter)
@@ -529,6 +527,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 adat++;
                                 szerkeszto.putInt("Jó válaszok száma",adat);
+                                szerkeszto.putInt("Mentett válaszok száma",adat);
                                 szerkeszto.commit();
                                 adatbazis.Adat_modositas(felhasznalo_nev,adat); // paraméterként átadomn a lekérdezett felhasználó nevet és és a jó válaszok számát
                                 Button_valasz_C.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
@@ -555,6 +554,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 Eredmeny = "Hibás válasz"; // rossz válasz esetén az elmentett változó értéket átírja "Hibás válasz"-ra
                                 szerkeszto.putString("Jó válasz volt-e", Eredmeny); // putstring-vel és commit-val pedig frissítjük az értéket (MainActivity_eredmenytable osztályban minden kérdésnél lekérdezi hogy "Jó válasz" vagy "Hibás válasz"-e a String értéke
+                                szerkeszto.remove("Mentett válaszok száma");
                                 szerkeszto.commit();
                                 Button_valasz_C.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
                                 switch (Helyes_valasz_karakter)
@@ -604,6 +604,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 adat++;
                                 szerkeszto.putInt("Jó válaszok száma",adat);
+                                szerkeszto.putInt("Mentett válaszok száma",adat);
                                 szerkeszto.commit();
                                 adatbazis.Adat_modositas(felhasznalo_nev,adat);
                                 Button_valasz_D.setBackgroundResource(R.drawable.gomb_helyes_valasz_style);
@@ -630,6 +631,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
                             {
                                 Eredmeny = "Hibás válasz"; // rossz válasz esetén az elmentett változó értéket átírja "Hibás válasz"-ra
                                 szerkeszto.putString("Jó válasz volt-e", Eredmeny); // putstring-vel és commit-val pedig frissítjük az értéket (MainActivity_eredmenytable osztályban minden kérdésnél lekérdezi hogy "Jó válasz" vagy "Hibás válasz"-e a String értéke
+                                szerkeszto.remove("Mentett válaszok száma");
                                 szerkeszto.commit();
                                 Button_valasz_D.setBackgroundResource(R.drawable.gomb_hibas_valasz_style);
                                 switch (Helyes_valasz_karakter)
@@ -712,5 +714,33 @@ public class MainActivity_kerdesek extends AppCompatActivity
         startActivity(Uj_jatek);
         finish();
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.jatek_mentes, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        SharedPreferences Jatek_mentes_Jo_valaszok_szama = getSharedPreferences(filename,Context.MODE_PRIVATE);
+        SharedPreferences.Editor Jatek_mentes = Jatek_mentes_Jo_valaszok_szama.edit();
+        int Mentett_valaszok_szama = Jatek_mentes_Jo_valaszok_szama.getInt("Jó válaszok száma",0);
+        String Mentett_felhasznalo_nev = Jatek_mentes_Jo_valaszok_szama.getString("Felhasználó név","");
+        switch (item.getItemId())
+        {
+            case R.id.Jatek_mentes:
+                Jatek_mentes.putInt("Mentett válaszok száma",Mentett_valaszok_szama);
+                Jatek_mentes.putString("Mentett felhasználó név",Mentett_felhasznalo_nev);
+                Jatek_mentes.commit();
+                Intent fomenu = new Intent(MainActivity_kerdesek.this,MainActivity.class);
+                startActivity(fomenu);
+                finish();
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                Visszaszamlalo.cancel();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

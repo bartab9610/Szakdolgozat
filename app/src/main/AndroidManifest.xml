@@ -30,7 +30,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity_kerdesek"
-            android:configChanges="orientation|screenSize" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity_eredmenytabla"
             android:screenOrientation="portrait" />
@@ -39,5 +39,4 @@
             android:screenOrientation="portrait" />
     </application>
 
-</manifest>
-<!-- android:configChanges="orientation|screenSize" - > portrait és landscape nézet között váltogat de nem tölti újra az Activity-t -->
+</manifest> <!-- android:configChanges="orientation|screenSize" - > portrait és landscape nézet között váltogat de nem tölti újra az Activity-t -->

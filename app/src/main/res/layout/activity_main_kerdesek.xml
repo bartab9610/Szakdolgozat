@@ -101,18 +101,18 @@
            />
    </LinearLayout>
    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/Activity_3_imageview_ikon"
-        android:orientation="vertical">
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:id="@+id/Activity_3_imagebutton_nezoi_segitseg"
-            android:background="@drawable/nezoi_segitseg_szerkeztett_meretezett"
-            android:layout_marginTop="17dp"
-            android:layout_marginBottom="35dp"
-            />
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_toRightOf="@id/Activity_3_imageview_ikon"
+       android:orientation="vertical">
+       <ImageButton
+           android:layout_width="match_parent"
+           android:layout_height="65dp"
+           android:id="@+id/Activity_3_imagebutton_nezoi_segitseg"
+           android:background="@drawable/nezoi_segitseg_szerkeztett_meretezett"
+           android:layout_marginTop="17dp"
+           android:layout_marginBottom="35dp"
+           />
        <ImageButton
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
