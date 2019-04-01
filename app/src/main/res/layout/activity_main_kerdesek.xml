@@ -22,7 +22,7 @@
         android:textSize="23dp"
         android:textColor="@color/Text_color_white"
         android:layout_below="@id/Activity_3_imageview_ikon"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:background="@drawable/button_kerdesek_style"
@@ -90,7 +90,7 @@
            android:layout_height="65dp"
            android:id="@+id/Activity_3_imagebutton_telefonon_segitseg"
            android:background="@drawable/telefonos_segitseg_szinezett"
-           android:layout_marginTop="17dp"
+           android:layout_marginTop="5dp"
            android:layout_marginBottom="35dp"
            />
        <ImageButton
@@ -101,23 +101,30 @@
            />
    </LinearLayout>
    <LinearLayout
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_toRightOf="@id/Activity_3_imageview_ikon"
-       android:orientation="vertical">
-       <ImageButton
-           android:layout_width="match_parent"
-           android:layout_height="65dp"
-           android:id="@+id/Activity_3_imagebutton_nezoi_segitseg"
-           android:background="@drawable/nezoi_segitseg_szerkeztett_meretezett"
-           android:layout_marginTop="17dp"
-           android:layout_marginBottom="35dp"
-           />
-       <ImageButton
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:id="@+id/Activity_3_imagebutton_uj_kerdes"
-           android:background="@drawable/ujkerdes"
-           />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/Activity_3_imageview_ikon"
+        android:orientation="vertical">
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/Activity_3_imagebutton_nezoi_segitseg"
+            android:background="@drawable/nezoi_segitseg_szerkeztett_meretezett"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="35dp"
+            />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Activity_3_imagebutton_uj_kerdes"
+            android:background="@drawable/ujkerdes"
+            />
    </LinearLayout>
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:id="@+id/Activity_3_Linearlayout_grafikon"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
+    </LinearLayout>
 </RelativeLayout>

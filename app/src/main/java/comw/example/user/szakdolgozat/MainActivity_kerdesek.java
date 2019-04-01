@@ -14,8 +14,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.ValueDependentColor;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -26,6 +32,7 @@ import java.util.Random;
 
 public class MainActivity_kerdesek extends AppCompatActivity
 {
+    private LinearLayout MainActivity_3_Linearlayout_grafikon;
     private ImageButton MainActivity_3_telefonos_segitseg;
     private ImageButton MainActivity_3_felezes;
     private ImageButton MainActivity_3_nezoi_segitseg;
@@ -62,6 +69,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
     private int Uj_kerdes_segitseg_szama = 0;
 
     private Adatbazis_letrehozo adatbazis;
+    private BarGraphSeries<DataPoint> Oszlopok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -70,7 +78,6 @@ public class MainActivity_kerdesek extends AppCompatActivity
         setContentView(R.layout.activity_main_kerdesek);
 
         Inicializalas();
-
         Button_A_esemeny();
         Button_B_esemeny();
         Button_C_esemeny();
@@ -140,9 +147,9 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 MainActivity_3_telefonos_segitseg.setBackgroundResource(R.drawable.telefonos_segitseg_tiltva_szinezett);
                 MainActivity_3_telefonos_segitseg.setEnabled(false);
                 Alert_telefonos_segitseg = new AlertDialog.Builder(MainActivity_kerdesek.this);
-                Alert_telefonos_segitseg.setTitle("Telefonos segítség!").setMessage("A helyes válasz a: " + Kivalasztott_kerdes.getHelyes_valasz())
+                Alert_telefonos_segitseg.setTitle("Telefonos segítség!").setMessage("A helyes válasz a(z): " + Kivalasztott_kerdes.getHelyes_valasz())
                         .setCancelable(true) // Ne egyből írja majd ki a szöveget hanem folyamatosan
-                        .setIcon(R.drawable.telefonos_segitseg)
+                        .setIcon(R.drawable.telefonos_segitseg_szinezett)
                         .create();
                 Alert_telefonos_segitseg.show();
                 switch (Kivalasztott_kerdes.getHelyes_valasz())
@@ -292,7 +299,79 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Nezoi_segitseg_szama++; // gomblenyomásra az értéket megnöveli 1-re
                 szerkeszto.putInt("Nézői segítség", Nezoi_segitseg_szama); // kiírja az adatot az adatok.xml-be
                 szerkeszto.commit(); // commitolja így fríssítve lesz ami alapból 0
-                // IDE JÖN A DINAMIKUS LINEARLAYOUT ÉS ABBA BELE A GRAFIKON!!!!
+
+                MainActivity_3_Linearlayout_grafikon.setBackgroundColor(getResources().getColor(R.color.Gomb_keret_kek));
+                MainActivity_3_Linearlayout_grafikon.setVisibility(View.VISIBLE);
+                GraphView Grafikon = new GraphView(MainActivity_kerdesek.this);
+                Grafikon.setLayoutParams(new LinearLayout.LayoutParams
+                        (
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                switch (Helyes_valasz_karakter)
+                {
+                    case 'A':
+                        Oszlopok = new BarGraphSeries<>(new DataPoint[]
+                                {
+                                        new DataPoint(0.5, 41),
+                                        new DataPoint(2.5, 24),
+                                        new DataPoint(4.5, 22),
+                                        new DataPoint(6.5, 12)
+                                });
+                        break;
+                    case 'B':
+                        Oszlopok = new BarGraphSeries<>(new DataPoint[]
+                                {
+                                        new DataPoint(0.5, 25),
+                                        new DataPoint(2.5, 30),
+                                        new DataPoint(4.5, 23),
+                                        new DataPoint(6.5, 22)
+                                });
+                        break;
+                    case 'C':
+                        Oszlopok = new BarGraphSeries<>(new DataPoint[]
+                                {
+                                        new DataPoint(0.5, 22),
+                                        new DataPoint(2.5, 23),
+                                        new DataPoint(4.5, 46),
+                                        new DataPoint(6.5, 9)
+                                });
+                        break;
+                    case 'D':
+                        Oszlopok = new BarGraphSeries<>(new DataPoint[]
+                                {
+                                        new DataPoint(0.5, 22),
+                                        new DataPoint(2.5, 22),
+                                        new DataPoint(4.5, 21),
+                                        new DataPoint(6.5, 35)
+                                });
+                        break;
+                }
+                Grafikon.setTitle("Közönség szavazatok");
+                Grafikon.setTitleColor(getResources().getColor(R.color.Gomb_keret_narancs));
+                Grafikon.addSeries(Oszlopok);
+                Oszlopok.setValueDependentColor(new ValueDependentColor<DataPoint>()
+                {
+                    @Override
+                    public int get(DataPoint data)
+                    {
+                        return getResources().getColor(R.color.Gomb_keret_narancs); // Color.rgb((int) data.getX()*255/4, (int) Math.abs(data.getY()*255/6),100);
+                    }
+                });
+                Oszlopok.setAnimated(true);
+                Oszlopok.setSpacing(20);
+                Oszlopok.setDrawValuesOnTop(true);
+                Oszlopok.setValuesOnTopColor(getResources().getColor(R.color.Gomb_keret_narancs));
+                MainActivity_3_Linearlayout_grafikon.addView(Grafikon); // hozzáadom a linearlayout-hoz a grafikont
+                new Handler().postDelayed(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        MainActivity_3_Linearlayout_grafikon.setVisibility(View.INVISIBLE);
+                    }
+                },5000);
+
             }
         });
         // Új kérdés segítség adat lekérdezése és letiltása
@@ -333,6 +412,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
     }
     public void Inicializalas()
     {
+        MainActivity_3_Linearlayout_grafikon = (LinearLayout) findViewById(R.id.Activity_3_Linearlayout_grafikon);
         MainActivity_3_telefonos_segitseg = (ImageButton) findViewById(R.id.Activity_3_imagebutton_telefonon_segitseg);
         MainActivity_3_felezes = (ImageButton) findViewById(R.id.Activity_3_imagebutton_felezes);
         MainActivity_3_nezoi_segitseg = (ImageButton) findViewById(R.id.Activity_3_imagebutton_nezoi_segitseg);
@@ -357,6 +437,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Button_valasz_B.setEnabled(false);
                 Button_valasz_C.setEnabled(false);
                 Button_valasz_D.setEnabled(false);
+                MainActivity_3_telefonos_segitseg.setEnabled(false);
+                MainActivity_3_felezes.setEnabled(false);
+                MainActivity_3_nezoi_segitseg.setEnabled(false);
+                MainActivity_3_uj_kerdes.setEnabled(false);
                 Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 Visszaszamlalo.cancel(); // leállítja a gomb lenyomására az időt így nem pörög továbbí
 
@@ -389,6 +473,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_B.setEnabled(false);
                     Button_valasz_C.setEnabled(false);
                     Button_valasz_D.setEnabled(false);
+                    MainActivity_3_telefonos_segitseg.setEnabled(false);
+                    MainActivity_3_felezes.setEnabled(false);
+                    MainActivity_3_nezoi_segitseg.setEnabled(false);
+                    MainActivity_3_uj_kerdes.setEnabled(false);
                     Button_valasz_A.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
@@ -434,6 +522,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Button_valasz_B.setEnabled(false);
                 Button_valasz_C.setEnabled(false);
                 Button_valasz_D.setEnabled(false);
+                MainActivity_3_telefonos_segitseg.setEnabled(false);
+                MainActivity_3_felezes.setEnabled(false);
+                MainActivity_3_nezoi_segitseg.setEnabled(false);
+                MainActivity_3_uj_kerdes.setEnabled(false);
                 Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 Visszaszamlalo.cancel(); // leállítja a gomb lenyomására az időt így nem pörög továbbí
 
@@ -466,6 +558,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_B.setEnabled(false);
                     Button_valasz_C.setEnabled(false);
                     Button_valasz_D.setEnabled(false);
+                    MainActivity_3_telefonos_segitseg.setEnabled(false);
+                    MainActivity_3_felezes.setEnabled(false);
+                    MainActivity_3_nezoi_segitseg.setEnabled(false);
+                    MainActivity_3_uj_kerdes.setEnabled(false);
                     Button_valasz_B.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
@@ -511,6 +607,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Button_valasz_B.setEnabled(false);
                 Button_valasz_C.setEnabled(false);
                 Button_valasz_D.setEnabled(false);
+                MainActivity_3_telefonos_segitseg.setEnabled(false);
+                MainActivity_3_felezes.setEnabled(false);
+                MainActivity_3_nezoi_segitseg.setEnabled(false);
+                MainActivity_3_uj_kerdes.setEnabled(false);
                 Button_valasz_C.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 Visszaszamlalo.cancel(); // leállítja a gomb lenyomására az időt így nem pörög továbbí
 
@@ -543,6 +643,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_B.setEnabled(false);
                     Button_valasz_C.setEnabled(false);
                     Button_valasz_D.setEnabled(false);
+                    MainActivity_3_telefonos_segitseg.setEnabled(false);
+                    MainActivity_3_felezes.setEnabled(false);
+                    MainActivity_3_nezoi_segitseg.setEnabled(false);
+                    MainActivity_3_uj_kerdes.setEnabled(false);
                     Button_valasz_C.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
@@ -588,6 +692,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 Button_valasz_B.setEnabled(false);
                 Button_valasz_C.setEnabled(false);
                 Button_valasz_D.setEnabled(false);
+                MainActivity_3_telefonos_segitseg.setEnabled(false);
+                MainActivity_3_felezes.setEnabled(false);
+                MainActivity_3_nezoi_segitseg.setEnabled(false);
+                MainActivity_3_uj_kerdes.setEnabled(false);
                 Button_valasz_D.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                 Visszaszamlalo.cancel(); // leállítja a gomb lenyomására az időt így nem pörög továbbí
 
@@ -620,6 +728,10 @@ public class MainActivity_kerdesek extends AppCompatActivity
                     Button_valasz_B.setEnabled(false);
                     Button_valasz_C.setEnabled(false);
                     Button_valasz_D.setEnabled(false);
+                    MainActivity_3_telefonos_segitseg.setEnabled(false);
+                    MainActivity_3_felezes.setEnabled(false);
+                    MainActivity_3_nezoi_segitseg.setEnabled(false);
+                    MainActivity_3_uj_kerdes.setEnabled(false);
                     Button_valasz_D.setBackgroundResource(R.drawable.gomb_kivalasztott_valasz_style);
                     new Handler().postDelayed(new Runnable()
                         {
@@ -663,7 +775,7 @@ public class MainActivity_kerdesek extends AppCompatActivity
     }
     public void Kerdes_ido_visszaszamlalo()
     {
-        Visszaszamlalo = new CountDownTimer (62000,1000) // 90000 -> 1:30perc || 91000 hogy 1:30-ről induljon a visszaszámlálás
+        Visszaszamlalo = new CountDownTimer (47000,1000) // 90000 -> 1:30perc || 91000 hogy 1:30-ről induljon a visszaszámlálás
         {
             @Override
             public void onTick(long l)
