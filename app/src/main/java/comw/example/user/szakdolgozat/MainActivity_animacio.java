@@ -114,7 +114,7 @@ public class MainActivity_animacio extends AppCompatActivity implements Animatio
                 {
                     Intro_jatszas = true;
                     Button_hangero.setBackgroundResource(R.drawable.volume_up_blue);
-                    Intro.setVolume(0, 1);
+                    Intro.setVolume(1, 1);
                 }
             }
         });

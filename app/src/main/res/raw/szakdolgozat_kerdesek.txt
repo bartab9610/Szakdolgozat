@@ -1,4 +1,4 @@
-Hányas számú mezt viselte Puskás Öcsi az Aranycsapatban?;10-es;9-es;8-as;11-es;A;BCD
+﻿Hányas számú mezt viselte Puskás Öcsi az Aranycsapatban?;10-es;9-es;8-as;11-es;A;BCD
 Ki volt az első köztársasági elnök Magyarországon a II. világháború után?;Nagy Ferenc;Szakasits Árpád;Dobi István;Tildy Zoltán;D;ABC
 Ki közvetítette a legendás 6:3-as magyar-angol futballmérkőzést?;Vitray Tamás;Komjáthy György;Szepesi György;Ipper Pál;C;ABD
 Melyik olasz futball-klub játékosait becézik "zebráknak"?;Internazionale;Juventus;Torino;AC Milan;B;ACD
@@ -113,3 +113,18 @@ Kik építettek akropoliszokat?;az ókori egyiptomiak;a vikingek;a maják;az ók
 Mi a szputnyik?;űrrepülőgép;hordozórakéta;műhold;űrteleszkóp;C;ABD
 Hány perc egy hét?;10080 perc;12080 perc;14280 perc;16800 perc;A;BCD
 Melyik hónapban iktatják be hivatalukba az Egyesült Államok elnökeit?;november;december;január;február;C;ABD
+Hány ország területét érinti a Szahara sivatag?;9;11;12;14;C;ABD
+Hány lába van egy barna százlábúnak?;30;50;70;100;A;BCD
+Melyik hónapot nevezik a hullócsillagok hónapjának?;Április;Augusztus;Október;December;B;ACD
+Melyik a legalacsonyabb mértékegységre szolgáló előtag?;mikro;nano;piko;femto;D;ABC
+Milyen szín következik az jelzőlámpa zöld jelzése után?;sárga és zöld együtt;piros;piros és sárga együtt;sárga;D;ABC
+Ki volt az egyetlen labdarúgókapus, aki Aranylabdát kapott?;Manuel Neuer;Lev Jasin;Oliver Kahn;;Edwin van der Sar;B;ACD
+Hány golyó van az asztalon a snooker kezdetekor?;11;16;20;22;D;ABC
+Mi kell a jó munkához a mondás szerint?;idő;ihlet;ötéves terv;béremelés;A;BCD
+Milyen állatokkal foglalkozik egy ornitológus?;halakkal;rovarokkal;madarakkal;hüllőkkel;C;ABD
+Milyen állat a haris?;hal;madár;rovar;emlős;B;ACD
+Kilométerre kerekítve mekkora a maratoni futók távja?;36 km;42 km;44 km;48 km;B;ACD
+Ki az NBA történetének a legtöbb pontot dobó játékosa?;Kobe Bryant;Shaquille O'Neal;Kareem Abdul-Jabbar;LeBron James;C;ABD
+Milyen poszton játszott Grosics Gyula az Aranycsapat játékosa?;kapus;középhátvéd;középpályás;csatár;A;BCD
+Milyen állat a güzü?;hal;egér;madár;rovar;B;ACD
+Milyen néven született a The Rolling Stones rock együttes frontembere Mick Jagger?;Sir Michael Phillip Jagger;Brian Jones Jr;Keith Richards;Mark Thomas Harmon;A;BCD

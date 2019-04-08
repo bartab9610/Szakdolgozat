@@ -301,7 +301,6 @@ public class MainActivity_kerdesek extends AppCompatActivity
                 szerkeszto.commit(); // commitolja így fríssítve lesz ami alapból 0
 
                 MainActivity_3_Linearlayout_grafikon.setBackgroundColor(getResources().getColor(R.color.Gomb_keret_kek));
-                MainActivity_3_Linearlayout_grafikon.setVisibility(View.VISIBLE);
                 GraphView Grafikon = new GraphView(MainActivity_kerdesek.this);
                 Grafikon.setLayoutParams(new LinearLayout.LayoutParams
                         (
@@ -782,13 +781,13 @@ public class MainActivity_kerdesek extends AppCompatActivity
             {
                 if (l / 1000 > 60)
                 {
-                    String hatralevo_id = String.format("1:%02d",(l / 1000) - 61); // 60 helyett 61 hogy 1:01 után ne 0:59 legyen hanem 1:00
-                    MainActivity_3_textview_visszaszamlalo.setText(hatralevo_id);
+                    String hatralevo_ido = String.format("1:%02d",(l / 1000) - 61); // 60 helyett 61 hogy 1:01 után ne 0:59 legyen hanem 1:00
+                    MainActivity_3_textview_visszaszamlalo.setText(hatralevo_ido);
                 }
                 else
                 {
-                    String hatralevo_id= String.format("0:%02d",(l / 1000) -1);
-                    MainActivity_3_textview_visszaszamlalo.setText(hatralevo_id);
+                    String hatralevo_ido= String.format("0:%02d",(l / 1000) -1);
+                    MainActivity_3_textview_visszaszamlalo.setText(hatralevo_ido);
                 }
             }
             @Override

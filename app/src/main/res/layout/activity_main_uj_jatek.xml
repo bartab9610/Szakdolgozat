@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Activity_2_imageview_avatar"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="30dp"
         android:background="@drawable/ferfi"
         android:layout_below="@id/Activity_2_imageview_ikon"
         />
@@ -31,7 +31,7 @@
         android:layout_centerVertical="true"
         android:background="@drawable/gomb_style"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="30dp"
         />
     <EditText
         android:layout_width="wrap_content"

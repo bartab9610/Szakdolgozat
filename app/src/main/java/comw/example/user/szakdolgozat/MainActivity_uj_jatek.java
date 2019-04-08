@@ -45,6 +45,7 @@ public class MainActivity_uj_jatek extends AppCompatActivity
         {
             @Override
             public void onClick(View view)
+
             {
                 Elozo_menupont();
             }
@@ -54,11 +55,18 @@ public class MainActivity_uj_jatek extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                if (!MainActivity_2_Edittext_felhasznalo_nev.getText().toString().equals("") && !MainActivity_2_Edittext_felhasznalo_nev.getText().toString().contains(" "))
+                if (!MainActivity_2_Edittext_felhasznalo_nev.getText().toString().trim().equals(""))
                 {
-                    Eredmenyek_novelese_Mentes();
-                    Jatek_inditas();
-                    Adat_rogzites();
+                    if (adatbazis.Felhasznalo_nev(MainActivity_2_Edittext_felhasznalo_nev.getText().toString()).getCount() == 0)
+                    {
+                        Eredmenyek_novelese_Mentes();
+                        Jatek_inditas();
+                        Adat_rogzites();
+                    }
+                    else
+                    {
+                        Toast.makeText(MainActivity_uj_jatek.this,"Ilyen felhasználó név már létezik!",Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
